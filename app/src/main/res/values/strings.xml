@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">lrthubkotlin</string>
+    <string name="app_name">LRTHub</string>
+
+    <!-- URLs -->
+    <string name="base_url">lrthub.herokuapp.com</string>
+
+    <!-- API Keys -->
+    <string name="demo_api_key">e35e88232e07d511d6f9497cfe233082862a35f4</string>
 </resources>

@@ -1,7 +1,8 @@
-package com.xrojan.lrthubkotlin
+package com.xrojan.lrthubkotlin.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.ui.dashboard.DashboardFragment
 
 class DashboardActivity : AppCompatActivity() {
