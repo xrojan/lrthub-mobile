@@ -1,5 +1,7 @@
 package com.xrojan.lrthubkotlin.activities
 
+import android.content.Context
+import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -15,7 +17,7 @@ open class BaseActivity : AppCompatActivity() {
     private val subscriptions = CompositeDisposable()
 
     /**
-     * Loads request fragment in a specific layout resource
+     * Loads requested fragment in a specific layout resource
      * @param layoutId
      * @param fragment
      */

@@ -1,5 +1,6 @@
 package com.xrojan.lrthubkotlin.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.xrojan.lrthubkotlin.App
@@ -8,6 +9,7 @@ import com.xrojan.lrthubkotlin.activities.BaseActivity
 import com.xrojan.lrthubkotlin.constants.HTTP
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.entities.User
+import com.xrojan.lrthubkotlin.ui.dashboard.MainActivity
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.login_activity.*
@@ -60,9 +62,15 @@ class LoginActivity : BaseActivity() {
 
     private fun onSuccessLogin(data: UIData<User>) {
         Log.e(tag, data.request.result.toString())
+
+        // Start new activity intent on login
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun onFailedLogin() {
         Log.e(tag, getString(R.string.login_invalid))
+
+        // TODO: Show error ui dialog / alert here
     }
 }
