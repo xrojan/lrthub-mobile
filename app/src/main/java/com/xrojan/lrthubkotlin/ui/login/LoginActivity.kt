@@ -30,7 +30,7 @@ class LoginActivity : BaseActivity() {
 
     private fun initComponents() {
         bt_login.setOnClickListener {
-            loginUser(getString(R.string.demo_username), getString(R.string.demo_password))
+            loginUser(et_username.text.toString(), et_password.text.toString())
         }
     }
 
