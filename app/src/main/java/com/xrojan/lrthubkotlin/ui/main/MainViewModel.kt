@@ -1,4 +1,4 @@
-package com.xrojan.lrthubkotlin.ui.dashboard
+package com.xrojan.lrthubkotlin.ui.main
 
 import android.arch.lifecycle.ViewModel
 

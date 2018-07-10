@@ -9,7 +9,7 @@ import com.xrojan.lrthubkotlin.activities.BaseActivity
 import com.xrojan.lrthubkotlin.constants.HTTP
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.entities.User
-import com.xrojan.lrthubkotlin.ui.dashboard.MainActivity
+import com.xrojan.lrthubkotlin.ui.main.MainActivity
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.login_activity.*
