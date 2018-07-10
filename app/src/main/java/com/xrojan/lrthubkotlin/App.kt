@@ -2,9 +2,12 @@ package com.xrojan.lrthubkotlin
 
 import android.app.Application
 import android.arch.persistence.room.Room
+import com.xrojan.lrthubkotlin.repository.FeedRepository
 import com.xrojan.lrthubkotlin.repository.UserRepository
+import com.xrojan.lrthubkotlin.repository.api.FeedApi
 import com.xrojan.lrthubkotlin.repository.api.UserApi
 import com.xrojan.lrthubkotlin.repository.db.AppDatabase
+import com.xrojan.lrthubkotlin.viewmodel.FeedViewModel
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -30,7 +33,12 @@ class App : Application() {
         private lateinit var userRepository: UserRepository
         private lateinit var userViewModel: UserViewModel
 
+        private lateinit var feedApi: FeedApi
+        private lateinit var feedRepository: FeedRepository
+        private lateinit var feedViewModel: FeedViewModel
+
         fun injectUserViewModel() = userViewModel
+        fun injectFeedViewModel() = feedViewModel
     }
 
     override fun onCreate() {
@@ -57,6 +65,11 @@ class App : Application() {
         userApi = retrofit.create(UserApi::class.java)
         userRepository = UserRepository(userApi, appDatabase.userDao())
         userViewModel = UserViewModel(userRepository)
+
+        // Feed
+        feedApi = retrofit.create(FeedApi::class.java)
+        feedRepository = FeedRepository(feedApi, getString(R.string.demo_api_key))
+        feedViewModel = FeedViewModel(feedRepository)
     }
 
 }

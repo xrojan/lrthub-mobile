@@ -8,9 +8,22 @@ import com.google.gson.annotations.SerializedName
 
 data class Request<T>(
         @SerializedName("status_code")
-        var statusCode: Int,
+        val statusCode: Int,
         @SerializedName("message")
-        var message: String,
+        val message: String,
         @SerializedName("result")
-        var result: T
+        val result: T
+)
+
+data class RequestArray<T>(
+        @SerializedName("status_code")
+        val statusCode: Int,
+        @SerializedName("count")
+        val count: Int,
+        @SerializedName("links")
+        val links: Links,
+        @SerializedName("page_count")
+        val pageCount: Int,
+        @SerializedName("results")
+        val result: T
 )

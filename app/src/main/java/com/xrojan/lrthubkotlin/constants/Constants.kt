@@ -23,4 +23,3 @@ class HTTP {
         val PERMISSION_DENIED = 550
     }
 }
-

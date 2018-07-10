@@ -21,9 +21,9 @@ open class BaseActivity : AppCompatActivity() {
      * @param layoutId
      * @param fragment
      */
-    fun loadFragment(layoutId: Int, fragment: Fragment) {
+    fun loadFragment(layoutId: Int, fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction()
-                .replace(layoutId, fragment)
+                .replace(layoutId, fragment, tag)
                 .commitNow()
     }
 

@@ -7,6 +7,7 @@
     <!-- Theme color -->
     <color name="flatBlack">#202e3b</color>
     <color name="flatBlackDark">#1d2a36</color>
+    <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="silver">#ecf0f1</color>
     <color name="silverDark">#bdc3c7</color>
