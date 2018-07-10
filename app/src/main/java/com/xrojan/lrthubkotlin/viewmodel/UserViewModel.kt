@@ -2,7 +2,7 @@ package com.xrojan.lrthubkotlin.viewmodel
 
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.UserRepository
-import com.xrojan.lrthubkotlin.repository.entities.Login
+import com.xrojan.lrthubkotlin.repository.entities.User
 import io.reactivex.Observable
 
 /**
@@ -12,7 +12,7 @@ import io.reactivex.Observable
 class UserViewModel(private val userRepository: UserRepository) {
     private val tag: String = UserViewModel::class.java.simpleName
 
-    fun loginUser(username: String, password: String): Observable<UIData<Login>> {
+    fun loginUser(username: String, password: String): Observable<UIData<User>> {
         return userRepository.loginUser(username, password)
                 .map {
                     UIData(it)

@@ -6,7 +6,7 @@ import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.activities.BaseActivity
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData
-import com.xrojan.lrthubkotlin.repository.entities.Login
+import com.xrojan.lrthubkotlin.repository.entities.User
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.login_activity.*
@@ -45,8 +45,8 @@ class LoginActivity : BaseActivity() {
                 }))
     }
 
-    private fun onSuccessLogin(data: UIData<Login>) {
-        Log.e(tag, data.request.result.user.toString())
+    private fun onSuccessLogin(data: UIData<User>) {
+        Log.e(tag, data.request.result.toString())
     }
 
     private fun onFailedLogin() {

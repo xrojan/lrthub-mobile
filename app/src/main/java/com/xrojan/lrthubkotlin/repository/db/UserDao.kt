@@ -1,10 +1,7 @@
 package com.xrojan.lrthubkotlin.repository.db
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import com.xrojan.lrthubkotlin.repository.entities.User
-import android.arch.persistence.room.Delete
 
 
 /**
@@ -13,7 +10,10 @@ import android.arch.persistence.room.Delete
 
 @Dao
 interface UserDao {
-    @Insert
+    @Query("SELECT * FROM users")
+    fun getUsers(): List<User>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
 
     @Delete

@@ -8,7 +8,7 @@ import com.xrojan.lrthubkotlin.repository.entities.User
  * Created by Joshua de Guzman on 10/07/2018.
  */
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [(User::class)], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 }
