@@ -2,8 +2,12 @@
     <string name="app_name">LRTHub</string>
 
     <!-- URLs -->
-    <string name="base_url">lrthub.herokuapp.com</string>
+    <string name="api_base_url">http://lrthub.herokuapp.com</string>
 
     <!-- API Keys -->
     <string name="demo_api_key">e35e88232e07d511d6f9497cfe233082862a35f4</string>
+
+    <!-- Credentials -->
+    <string name="demo_username">demo</string>
+    <string name="demo_password">demo0000</string>
 </resources>

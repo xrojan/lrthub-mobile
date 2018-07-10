@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">@color/flatBlack</color>
+    <color name="colorPrimaryDark">@color/flatBlackDark</color>
+    <color name="colorAccent">@color/blueGreen</color>
+
+    <!-- Theme color -->
+    <color name="flatBlack">#202e3b</color>
+    <color name="flatBlackDark">#1d2a36</color>
+    <color name="white">#ffffff</color>
+    <color name="silver">#ecf0f1</color>
+    <color name="silverDark">#bdc3c7</color>
+    <color name="red">#ec3758</color>
+    <color name="redDark">#9c1d34</color>
+    <color name="green">#2ecc71</color>
+    <color name="greenDark">#27ae60</color>
+    <color name="blueGreen">#1abc9c</color>
+    <color name="blueGreenDark">#16a085</color>
+    <color name="yellow">#f1c40f</color>
+    <color name="yellowDark">#f39c12</color>
 </resources>

@@ -1,4 +1,4 @@
-package com.xrojan.lrthubkotlin.activities
+package com.xrojan.lrthubkotlin.ui.dashboard
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
