@@ -1,8 +1,10 @@
 package com.xrojan.lrthubkotlin
 
 import android.app.Application
+import android.arch.persistence.room.Room
 import com.xrojan.lrthubkotlin.repository.UserRepository
 import com.xrojan.lrthubkotlin.repository.api.UserApi
+import com.xrojan.lrthubkotlin.repository.db.AppDatabase
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -21,6 +23,8 @@ class App : Application() {
         private lateinit var okHttpClient: OkHttpClient
         private lateinit var gsonFactory: GsonConverterFactory
         private lateinit var rxJava2CallAdapterFactory: RxJava2CallAdapterFactory
+
+        private lateinit var appDatabase: AppDatabase
 
         private lateinit var userApi: UserApi
         private lateinit var userRepository: UserRepository
@@ -44,9 +48,14 @@ class App : Application() {
                 .client(okHttpClient)
                 .build()
 
+        // Database
+        appDatabase = Room.databaseBuilder(applicationContext,
+                AppDatabase::class.java,
+                getString(R.string.database_name)).build()
+
         // User
         userApi = retrofit.create(UserApi::class.java)
-        userRepository = UserRepository(userApi)
+        userRepository = UserRepository(userApi, appDatabase.userDao())
         userViewModel = UserViewModel(userRepository)
     }
 

@@ -1,7 +1,6 @@
 package com.xrojan.lrthubkotlin.viewmodel
 
-import android.util.Log
-import com.xrojan.lrthubkotlin.data.UIData
+import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.UserRepository
 import com.xrojan.lrthubkotlin.repository.entities.Login
 import io.reactivex.Observable

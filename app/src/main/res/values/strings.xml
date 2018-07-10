@@ -11,6 +11,9 @@
     <string name="demo_username">demo</string>
     <string name="demo_password">demo0000</string>
 
+    <!-- Database -->
+    <string name="database_name">db_lrthub_demo</string>
+
     <!-- Spiels -->
     <string name="login_invalid">Invalid username or password</string>
 </resources>

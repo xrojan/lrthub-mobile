@@ -1,4 +1,4 @@
-package com.xrojan.lrthubkotlin.data
+package com.xrojan.lrthubkotlin.viewmodel.data
 
 import com.xrojan.lrthubkotlin.repository.entities.Request
 

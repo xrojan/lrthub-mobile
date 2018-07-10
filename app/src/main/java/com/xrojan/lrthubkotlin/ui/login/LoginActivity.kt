@@ -2,11 +2,10 @@ package com.xrojan.lrthubkotlin.ui.login
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.activities.BaseActivity
-import com.xrojan.lrthubkotlin.data.UIData
+import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.entities.Login
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import io.reactivex.schedulers.Schedulers
