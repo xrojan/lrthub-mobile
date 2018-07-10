@@ -10,4 +10,7 @@
     <!-- Credentials -->
     <string name="demo_username">demo</string>
     <string name="demo_password">demo0000</string>
+
+    <!-- Spiels -->
+    <string name="login_invalid">Invalid username or password</string>
 </resources>

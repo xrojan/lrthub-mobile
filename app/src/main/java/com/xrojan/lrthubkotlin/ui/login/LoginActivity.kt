@@ -41,11 +41,16 @@ class LoginActivity : BaseActivity() {
                 .subscribe({
                     onSuccessLogin(it)
                 }, {
-                    showError(it.message.toString())
+                    onFailedLogin()
+                    showError(tag, it.message.toString())
                 }))
     }
 
     private fun onSuccessLogin(data: UIData<Login>) {
         Log.e(tag, data.request.result.user.toString())
+    }
+
+    private fun onFailedLogin() {
+        Log.e(tag, getString(R.string.login_invalid))
     }
 }

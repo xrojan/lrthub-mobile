@@ -38,7 +38,7 @@ open class BaseActivity : AppCompatActivity() {
      * Base error logging
      * @param message
      */
-    fun showError(message: String) {
+    fun showError(tag: String, message: String) {
         Log.e(tag, message)
     }
 
