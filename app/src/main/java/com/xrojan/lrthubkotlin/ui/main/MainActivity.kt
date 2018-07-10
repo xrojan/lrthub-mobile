@@ -26,7 +26,6 @@ class MainActivity : BaseActivity() {
             traincheckFragment = TraincheckFragment.newInstance()
             feedbackFragment = FeedbackFragment.newInstance()
             settingsFragment = SettingsFragment.newInstance()
-            loadFragment(R.id.fl_container, newsFragment)
             initComponents()
         }
     }
@@ -52,5 +51,8 @@ class MainActivity : BaseActivity() {
             }
             true
         }
+
+        // Load initial view
+        bnv_dashboard.selectedItemId = R.id.nav_traincheck
     }
 }
