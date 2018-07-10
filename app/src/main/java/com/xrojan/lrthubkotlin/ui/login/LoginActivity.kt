@@ -5,6 +5,7 @@ import android.util.Log
 import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.activities.BaseActivity
+import com.xrojan.lrthubkotlin.constants.HTTP
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.entities.User
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
@@ -38,7 +39,19 @@ class LoginActivity : BaseActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.single())
                 .subscribe({
-                    onSuccessLogin(it)
+                    when (it.request.statusCode) {
+                        HTTP.OK -> {
+                            onSuccessLogin(it)
+                        }
+
+                        HTTP.FORBIDDEN -> {
+
+                        }
+
+                        HTTP.SERVICE_UNAVAILABLE -> {
+
+                        }
+                    }
                 }, {
                     onFailedLogin()
                     showError(tag, it.message.toString())
