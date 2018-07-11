@@ -17,7 +17,9 @@ import org.w3c.dom.Text
  * Created by Joshua de Guzman on 10/07/2018.
  */
 
-class FeedAdapter(val context: Context, val items: List<Feed>, val isFeatured: Boolean) : RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
+class FeedAdapter(private val context: Context,
+                  private val items: List<Feed>,
+                  private val isFeatured: Boolean) : RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivCoverImage: ImageView = view.iv_cover_image
@@ -27,7 +29,6 @@ class FeedAdapter(val context: Context, val items: List<Feed>, val isFeatured: B
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        // TODO: Add main page layout switcher method here
         return if (isFeatured) {
             ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_featured, parent, false))
         } else {
