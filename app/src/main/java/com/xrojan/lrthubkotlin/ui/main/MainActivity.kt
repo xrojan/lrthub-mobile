@@ -68,6 +68,9 @@ class MainActivity : BaseActivity() {
                 searchManager.getSearchableInfo(ComponentName(this, SearchableActivity::class.java)))
         searchView.queryHint = getString(R.string.search_hint)
         searchView.isIconified = false
+        searchManager.setOnCancelListener {
+            searchView.queryHint = getString(R.string.search_hint)
+        }
         return true
     }
 }

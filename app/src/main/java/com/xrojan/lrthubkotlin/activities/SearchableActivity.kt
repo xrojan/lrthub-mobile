@@ -27,8 +27,7 @@ class SearchableActivity : BaseActivity() {
     private fun handleIntent(intent: Intent) {
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
-            Log.e(tag, query)
-
+            supportActionBar!!.title = query
             val suggestions = SearchRecentSuggestions(this,
                     SuggestionProvider.AUTHORITY, SuggestionProvider.MODE)
             suggestions.saveRecentQuery(query, null)
