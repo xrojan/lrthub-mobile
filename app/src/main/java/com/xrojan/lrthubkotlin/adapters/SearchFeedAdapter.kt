@@ -64,7 +64,7 @@ class SearchFeedAdapter(private val context: Context,
      * @param query: String parameter passed by search view
      */
     fun filter(query: String) {
-        feedItemsSearch.clear()
+        feedItemsSearch = mutableListOf()
         for (item: Feed in items) {
             if (item.title.toLowerCase().contains(query.toLowerCase()) || item.content.toLowerCase().contains(query.toLowerCase())) {
                 feedItemsSearch.add(item)
@@ -80,8 +80,8 @@ class SearchFeedAdapter(private val context: Context,
      * Resets view to original feed list
      */
     fun resetFilter() {
-        feedItemsSearch.clear()
-        feedItems.clear()
+        feedItemsSearch = mutableListOf()
+        feedItems = mutableListOf()
         feedItems.addAll(items)
         itemsCount = feedItems.count()
         notifyDataSetChanged()

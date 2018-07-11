@@ -106,8 +106,22 @@ class MainActivity : BaseActivity() {
                 return true
             }
         })
+        searchView.setOnQueryTextFocusChangeListener { v, newViewFocus ->
+            if (!newViewFocus) {
+                // Clear filter
+                searchFeedAdapter.resetFilter()
+                rv_feeds_search.visibility = View.GONE
+            }
+        }
+        searchView.setOnCloseListener {
+            searchFeedAdapter.resetFilter()
+            rv_feeds_search.visibility = View.GONE
+            true
+        }
         searchManager.setOnCancelListener {
             searchView.queryHint = getString(R.string.search_hint)
+            searchFeedAdapter.resetFilter()
+            rv_feeds_search.visibility = View.GONE
         }
         return true
     }
