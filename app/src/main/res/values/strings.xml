@@ -17,6 +17,7 @@
     <!-- Spiels -->
     <string name="login_invalid">Invalid username or password</string>
 
-     <!-- Form labels -->
-    <string name="search_hint">"Search feed...</string>
+    <!-- Form labels, Titles -->
+    <string name="search_title">Search</string>
+    <string name="search_hint">Search feed...</string>
 </resources>

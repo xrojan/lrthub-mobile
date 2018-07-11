@@ -19,6 +19,11 @@ interface UserApi {
 }
 
 interface FeedApi {
+    @GET("/api/v1/feeds/all/")
+    fun getFeeds(
+            @Header("Api-Key") apiKey: String,
+            @Query("search") search: String): Observable<RequestArray<List<Feed>>>
+
     @GET("/api/v1/feeds/")
     fun getFeeds(
             @Header("Api-Key") apiKey: String,

@@ -16,11 +16,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <provider
-            android:name=".providers.SuggestionProvider"
-            android:authorities="com.xrojan.lrthubkotlin.providers.SuggestionProvider"
-            android:exported="false" />
-
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".activities.SearchableActivity" />

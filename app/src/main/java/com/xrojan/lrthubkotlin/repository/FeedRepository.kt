@@ -14,6 +14,21 @@ class FeedRepository(val feedApi: FeedApi, val apiKey: String) {
     private var tag: String = FeedRepository::class.java.simpleName
 
     /**
+     * Returns feed list request with search params
+     */
+    fun getFeeds(search: String): Observable<RequestArray<List<Feed>>> {
+        return feedApi.getFeeds(apiKey, search)
+                .doOnNext {
+                    Log.e(tag, it.toString())
+                    Log.e(tag, it.result.toString())
+                }
+                .doOnError {
+                    Log.e(tag, it.toString())
+                    Log.e(tag, it.message)
+                }
+    }
+
+    /**
      * Returns feed list request
      */
     fun getFeeds(isFeatured: Boolean): Observable<RequestArray<List<Feed>>> {

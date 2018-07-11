@@ -14,6 +14,13 @@ import io.reactivex.Observable
 class FeedViewModel(private val feedRepository: FeedRepository) {
     private val tag: String = FeedViewModel::class.java.simpleName
 
+    fun getFeeds(search: String): Observable<UIDataArray<List<Feed>>> {
+        return feedRepository.getFeeds(search)
+                .map {
+                    UIDataArray(it)
+                }
+    }
+
     fun getFeeds(isFeatured: Boolean): Observable<UIDataArray<List<Feed>>> {
         return feedRepository.getFeeds(isFeatured)
                 .map {
