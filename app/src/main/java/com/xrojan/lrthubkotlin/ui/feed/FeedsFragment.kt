@@ -31,7 +31,7 @@ class FeedsFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             initComponents()
         }
     }
@@ -71,7 +71,7 @@ class FeedsFragment : BaseFragment() {
                 }))
     }
 
-    private fun showFeaturedFeeds(data: UIDataArray<List<Feed>>){
+    private fun showFeaturedFeeds(data: UIDataArray<List<Feed>>) {
         Log.e(tag!!, data.toString())
         doAsync {
             uiThread {

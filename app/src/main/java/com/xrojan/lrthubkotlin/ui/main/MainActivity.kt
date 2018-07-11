@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.main_activity.*
 import android.app.SearchManager
 import android.content.ComponentName
 import android.content.Context
-import android.util.Log
 import android.widget.SearchView
 import com.xrojan.lrthubkotlin.activities.SearchableActivity
 
@@ -67,10 +66,8 @@ class MainActivity : BaseActivity() {
         val searchView = searchItem.actionView as SearchView
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(ComponentName(this, SearchableActivity::class.java)))
-
         searchView.queryHint = getString(R.string.search_hint)
         searchView.isIconified = false
-
         return true
     }
 }

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.app.SearchManager
 import android.util.Log
+import android.provider.SearchRecentSuggestions
+import com.xrojan.lrthubkotlin.providers.SuggestionProvider
 
 
 /**
@@ -26,6 +28,10 @@ class SearchableActivity : BaseActivity() {
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             Log.e(tag, query)
+
+            val suggestions = SearchRecentSuggestions(this,
+                    SuggestionProvider.AUTHORITY, SuggestionProvider.MODE)
+            suggestions.saveRecentQuery(query, null)
         }
     }
 }
