@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.adapters.FeedAdapter
+import com.xrojan.lrthubkotlin.constants.TAG
 import com.xrojan.lrthubkotlin.fragments.BaseFragment
 import com.xrojan.lrthubkotlin.repository.entities.Feed
 import com.xrojan.lrthubkotlin.viewmodel.FeedViewModel
@@ -24,6 +25,7 @@ import org.jetbrains.anko.uiThread
 
 class FeedsFragment : BaseFragment() {
     private val feedViewModel: FeedViewModel = App.injectFeedViewModel()
+    private lateinit var feedDetailDialogFragment: FeedDetailDialogFragment
 
     companion object {
         fun newInstance() = FeedsFragment()
@@ -76,7 +78,14 @@ class FeedsFragment : BaseFragment() {
         doAsync {
             uiThread {
                 rv_featured_feeds.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                rv_featured_feeds.adapter = FeedAdapter(context!!, data.request.result, true)
+
+                val feedAdapter = FeedAdapter(context!!, data.request.result, true)
+                feedAdapter.onItemClick = {
+                    feedDetailDialogFragment = FeedDetailDialogFragment()
+                    feedDetailDialogFragment.show(fragmentManager, TAG.FEED_DETAIL, data.request.result[it])
+                }
+
+                rv_featured_feeds.adapter = feedAdapter
                 pb_loading.visibility = View.GONE
             }
         }
@@ -87,7 +96,14 @@ class FeedsFragment : BaseFragment() {
         doAsync {
             uiThread {
                 rv_feeds.layoutManager = LinearLayoutManager(context)
-                rv_feeds.adapter = FeedAdapter(context!!, data.request.result, false)
+
+                val feedAdapter = FeedAdapter(context!!, data.request.result, false)
+                feedAdapter.onItemClick = {
+                    feedDetailDialogFragment = FeedDetailDialogFragment()
+                    feedDetailDialogFragment.show(fragmentManager, TAG.FEED_DETAIL, data.request.result[it])
+                }
+
+                rv_feeds.adapter = feedAdapter
                 pb_loading.visibility = View.GONE
             }
         }

@@ -1,5 +1,7 @@
 package com.xrojan.lrthubkotlin.constants
 
+import com.xrojan.lrthubkotlin.ui.feed.FeedDetailDialogFragment
+
 /**
  * Created by Joshua de Guzman on 10/07/2018.
  */
@@ -21,5 +23,11 @@ class HTTP {
         val NOT_IMPLEMENTED = 501
         val SERVICE_UNAVAILABLE = 503
         val PERMISSION_DENIED = 550
+    }
+}
+
+class TAG {
+    companion object {
+        val FEED_DETAIL = FeedDetailDialogFragment::class.java.simpleName
     }
 }

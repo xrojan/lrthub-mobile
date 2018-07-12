@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.repository.entities.Feed
 import kotlinx.android.synthetic.main.item_feed.view.*
-import org.w3c.dom.Text
+
 
 /**
  * Created by Joshua de Guzman on 10/07/2018.
@@ -20,6 +20,8 @@ import org.w3c.dom.Text
 class FeedAdapter(private val context: Context,
                   private val items: List<Feed>,
                   private val isFeatured: Boolean) : RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
+
+    var onItemClick: (Int) -> Unit = {}
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivCoverImage: ImageView = view.iv_cover_image
@@ -37,8 +39,13 @@ class FeedAdapter(private val context: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val feed: Feed = items.get(position)
+        // Assign click listener
+        holder.itemView.setOnClickListener {
+            onItemClick(holder.adapterPosition)
+        }
 
+        // Render data
+        val feed: Feed = items.get(position)
         if (isFeatured) {
             holder.tvTitle.text = truncate(feed.title, 20, "...")
             holder.tvContent.text = truncate(feed.content, 30, "...")
@@ -46,9 +53,9 @@ class FeedAdapter(private val context: Context,
             holder.tvTitle.text = feed.title
             holder.tvContent.text = truncate(feed.content, 100, "...")
         }
-
         holder.tvDatePosted.text = feed.datePosted
 
+        // Render cover image
         Glide.with(context)
                 .load(feed.coverImage)
                 .into(holder.ivCoverImage)
