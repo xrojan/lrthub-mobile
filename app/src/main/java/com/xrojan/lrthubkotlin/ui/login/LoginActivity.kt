@@ -65,7 +65,7 @@ class LoginActivity : BaseActivity() {
                     showError(tag, it.message.toString())
                 }))
     }
-
+    
     private fun onSuccessLogin(data: UIData<User>) {
         Log.e(tag, data.request.result.toString())
         doAsync {

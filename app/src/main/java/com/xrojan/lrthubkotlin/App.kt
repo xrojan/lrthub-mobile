@@ -20,7 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class App : Application() {
 
-
     companion object {
         private lateinit var retrofit: Retrofit
         private lateinit var okHttpClient: OkHttpClient
