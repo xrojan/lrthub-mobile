@@ -88,6 +88,11 @@ class FeedbackFragment : BaseFragment() {
                 }))
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        disposeSubscriptions()
+    }
+
     private fun onSuccessFeedbackConversations(data: UIDataArray<List<FeedbackConversation>>) {
         doAsync {
             uiThread {

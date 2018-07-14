@@ -77,18 +77,23 @@ class MainActivity : BaseActivity() {
         bnv_dashboard.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_feeds -> {
+                    iv_banner_ad_view.visibility = View.VISIBLE
                     loadFragment(R.id.fl_container, feedsFragment, feedsFragment::class.java.simpleName)
                 }
                 R.id.nav_ask -> {
+                    iv_banner_ad_view.visibility = View.GONE
                     loadFragment(R.id.fl_container, chatbotFragment, chatbotFragment::class.java.simpleName)
                 }
                 R.id.nav_traincheck -> {
+                    iv_banner_ad_view.visibility = View.GONE
                     loadFragment(R.id.fl_container, traincheckFragment, traincheckFragment::class.java.simpleName)
                 }
                 R.id.nav_feedback -> {
+                    iv_banner_ad_view.visibility = View.GONE
                     loadFragment(R.id.fl_container, feedbackFragment, feedbackFragment::class.java.simpleName)
                 }
                 R.id.nav_settings -> {
+                    iv_banner_ad_view.visibility = View.GONE
                     loadFragment(R.id.fl_container, profileFragment, profileFragment::class.java.simpleName)
                 }
             }
