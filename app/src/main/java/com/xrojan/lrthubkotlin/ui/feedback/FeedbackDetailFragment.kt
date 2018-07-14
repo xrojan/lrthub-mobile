@@ -22,6 +22,8 @@ import kotlinx.android.synthetic.main.feedback_dialog_fragment.*
 import kotlinx.android.synthetic.main.feedback_fragment.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by Joshua de Guzman on 14/07/2018.
@@ -78,6 +80,10 @@ class FeedbackDetailDialogFragment : DialogFragment() {
                                 HTTP.CREATED -> {
                                     onSuccessSendFeedback(it)
                                 }
+
+                                HTTP.BAD_REQUEST -> {
+                                    //
+                                }
                             }
                         }, {
                             Log.e(tag, it.message)
@@ -86,6 +92,11 @@ class FeedbackDetailDialogFragment : DialogFragment() {
         }
 
         bt_cancel.setOnClickListener { dismiss() }
+
+        // Init dates
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+        val millisInString = dateFormat.format(Date())
+        et_incident_date.setText(millisInString.toString())
     }
 
     private fun onSuccessFetchLocalData(token: String, uid: Int) {
