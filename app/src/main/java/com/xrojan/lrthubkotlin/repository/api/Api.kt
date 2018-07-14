@@ -51,6 +51,11 @@ interface FeedbackApi {
     @GET("/api/v1/feedback/")
     fun getFeedbackConversations(@Header("Authorization") authorization: String): Observable<RequestArray<List<FeedbackConversation>>>
 
+    @GET("/api/v1/feedback/{id}/")
+    fun getFeedbackConversation(@Header("Authorization") authorization: String,
+                                @Header("Api-Key") apiKey: String,
+                                @Path("id") id: Int): Observable<Request<FeedbackConversation>>
+
     @FormUrlEncoded
     @POST("/api/v1/feedback/create/")
     fun sendFeedbackConversation(@Header("Authorization") authorization: String,

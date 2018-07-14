@@ -92,7 +92,12 @@ class FeedbackFragment : BaseFragment() {
         doAsync {
             uiThread {
                 rv_feedback_conversations.layoutManager = LinearLayoutManager(activity)
-                rv_feedback_conversations.adapter = FeedbackAdapter(context!!, data.request.result)
+                val feedbackAdapter: FeedbackAdapter = FeedbackAdapter(context!!, data.request.result)
+                feedbackAdapter.onItemClick = {
+                    val feedbackDetailDialogFragment = FeedbackDetailDialogFragment()
+                    feedbackDetailDialogFragment.show(activity!!.fragmentManager, feedbackDetailDialogFragment::class.java.simpleName, data.request.result[it].id, this)
+                }
+                rv_feedback_conversations.adapter = feedbackAdapter
             }
         }
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
 
     <RelativeLayout
@@ -15,8 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/bt_create_new_main"
-            tools:listitem="@layout/item_feedback_conversation"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            tools:listitem="@layout/item_feedback_conversation" />
 
         <Button
             android:id="@+id/bt_create_new_main"
@@ -24,8 +24,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/margin_padding_size_small"
+            android:background="@drawable/background_button_forms_idle"
             android:fontFamily="@font/open_sans_semi_bold"
-            android:text="@string/submit_feedback_complaints" />
+            android:text="@string/submit_feedback_complaints"
+            android:textColor="@color/white" />
     </RelativeLayout>
 
     <LinearLayout
@@ -49,8 +51,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_padding_size_small"
+            android:background="@drawable/background_button_forms_idle"
             android:fontFamily="@font/open_sans_semi_bold"
-            android:text="@string/submit_feedback_complaints" />
+            android:text="@string/submit_feedback_complaints"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </RelativeLayout>

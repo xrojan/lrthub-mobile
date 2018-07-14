@@ -23,6 +23,14 @@ class FeedbackViewModel(val feedbackRepository: FeedbackRepository) {
                 }
     }
 
+
+    fun getFeedbackConversation(token: String, feedbackId: Int): Observable<UIData<FeedbackConversation>> {
+        return feedbackRepository.getFeedbackConversation(token, feedbackId)
+                .map {
+                    UIData(it)
+                }
+    }
+
     fun sendFeedback(token: String,
                      id: Int,
                      fullName: String,

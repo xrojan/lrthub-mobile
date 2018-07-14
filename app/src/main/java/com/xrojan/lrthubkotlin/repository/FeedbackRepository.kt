@@ -24,6 +24,17 @@ class FeedbackRepository(val feedbackApi: FeedbackApi, val apiKey: String) {
                 }
     }
 
+    fun getFeedbackConversation(token: String, feedbackId: Int): Observable<Request<FeedbackConversation>> {
+        return feedbackApi.getFeedbackConversation(token, apiKey, feedbackId)
+                .doOnNext {
+                    Log.e(tag, it.toString())
+                }
+
+                .doOnError {
+                    Log.e(tag, it.message)
+                }
+    }
+
     fun sendFeedback(token: String,
                      id: Int,
                      fullName: String,

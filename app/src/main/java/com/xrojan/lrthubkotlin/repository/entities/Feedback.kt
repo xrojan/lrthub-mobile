@@ -23,6 +23,8 @@ data class FeedbackConversation(
         val address: String,
         @SerializedName("employee_name")
         val employeeName: String,
+        @SerializedName("contact_number")
+        val contactNumber: String,
         @SerializedName("incident_subject")
         val incidentSubject: String,
         @SerializedName("incident_date")

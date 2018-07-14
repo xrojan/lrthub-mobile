@@ -21,6 +21,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.feedback_dialog_fragment.*
 import kotlinx.android.synthetic.main.feedback_fragment.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,6 +36,7 @@ class FeedbackDetailDialogFragment : DialogFragment() {
     private val userViewModel: UserViewModel = App.injectUserViewModel()
     private var token: String = ""
     private var uid: Int = -1
+    private var feedbackId = -1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.feedback_dialog_fragment, container, false)
@@ -47,8 +49,9 @@ class FeedbackDetailDialogFragment : DialogFragment() {
         }
     }
 
-    override fun show(manager: FragmentManager?, tag: String?) {
+    fun show(manager: FragmentManager?, tag: String?, feedbackId: Int) {
         super.show(manager, tag)
+        this.feedbackId = feedbackId
     }
 
     override fun onStart() {
@@ -63,6 +66,11 @@ class FeedbackDetailDialogFragment : DialogFragment() {
                 }, {
                     Log.e(tag, it.message)
                 }))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        subscriptions.clear()
     }
 
     override fun getTheme(): Int {
@@ -94,20 +102,60 @@ class FeedbackDetailDialogFragment : DialogFragment() {
         bt_cancel.setOnClickListener { dismiss() }
 
         // Init dates
-        val dateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
-        val millisInString = dateFormat.format(Date())
-        et_incident_date.setText(millisInString.toString())
+        if (feedbackId == -1) {
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val millisInString = dateFormat.format(Date())
+            et_incident_date.setText(millisInString.toString())
+        } else {
+            bt_submit.visibility = View.GONE
+        }
     }
 
     private fun onSuccessFetchLocalData(token: String, uid: Int) {
         this.token = token
         this.uid = uid
+
+        if (feedbackId != -1) {
+            subscribe(feedbackViewModel.getFeedbackConversation(token, feedbackId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.single())
+                    .subscribe({
+                        when (it.request.statusCode) {
+                            HTTP.OK -> {
+                                onSuccessRetrieveDetails(it)
+                            }
+                        }
+                    }, {
+                        Log.e(tag, it.message)
+                    }))
+        }
     }
 
     private fun onSuccessSendFeedback(data: Request<FeedbackConversation>) {
+        subscriptions.clear()
+        dismiss()
+    }
+
+    private fun onSuccessRetrieveDetails(data: UIData<FeedbackConversation>) {
         doAsync {
             uiThread {
-                // Navigate to detail view
+                bt_cancel.text = "BACK"
+
+                val feedbackConversation = data.request.result
+                et_incident_subject.setText(feedbackConversation.incidentSubject)
+                et_incident_subject.isEnabled = false
+                et_incident_date.setText(feedbackConversation.incidentDate)
+                et_incident_date.isEnabled = false
+                et_fullname.setText(feedbackConversation.fullName)
+                et_fullname.isEnabled = false
+                et_address.setText(feedbackConversation.address)
+                et_address.isEnabled = false
+                et_contact_number.setText(feedbackConversation.contactNumber)
+                et_contact_number.isEnabled = false
+                et_employee_name.setText(feedbackConversation.employeeName)
+                et_employee_name.isEnabled = false
+                et_other_details.setText(feedbackConversation.otherDetails)
+                et_other_details.isEnabled = false
             }
         }
     }
