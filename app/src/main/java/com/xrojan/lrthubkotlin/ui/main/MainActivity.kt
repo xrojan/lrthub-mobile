@@ -19,6 +19,7 @@ import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.activities.SearchableActivity
 import com.xrojan.lrthubkotlin.adapters.SearchFeedAdapter
 import com.xrojan.lrthubkotlin.repository.entities.Feed
+import com.xrojan.lrthubkotlin.ui.chatbot.ChatbotFragment
 import com.xrojan.lrthubkotlin.viewmodel.FeedViewModel
 import com.xrojan.lrthubkotlin.viewmodel.data.UIDataArray
 import io.reactivex.schedulers.Schedulers
@@ -30,6 +31,7 @@ class MainActivity : BaseActivity() {
     private val feedViewModel: FeedViewModel = App.injectFeedViewModel()
     private lateinit var feedsFragment: FeedsFragment
     private lateinit var traincheckFragment: TraincheckFragment
+    private lateinit var chatbotFragment: ChatbotFragment
     private lateinit var feedbackFragment: FeedbackFragment
     private lateinit var profileFragment: ProfileFragment
     private lateinit var searchFeedAdapter: SearchFeedAdapter
@@ -40,6 +42,7 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             feedsFragment = FeedsFragment.newInstance()
+            chatbotFragment = ChatbotFragment.newInstance()
             traincheckFragment = TraincheckFragment.newInstance()
             feedbackFragment = FeedbackFragment.newInstance()
             profileFragment = ProfileFragment.newInstance()
@@ -58,6 +61,9 @@ class MainActivity : BaseActivity() {
             when (it.itemId) {
                 R.id.nav_feeds -> {
                     loadFragment(R.id.fl_container, feedsFragment, feedsFragment::class.java.simpleName)
+                }
+                R.id.nav_ask -> {
+                    loadFragment(R.id.fl_container, chatbotFragment, chatbotFragment::class.java.simpleName)
                 }
                 R.id.nav_traincheck -> {
                     loadFragment(R.id.fl_container, traincheckFragment, traincheckFragment::class.java.simpleName)

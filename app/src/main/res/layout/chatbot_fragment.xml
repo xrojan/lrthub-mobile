@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_chatbot_messaging"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rl_enter_message"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_chatbot_message_bot" />
+
+    <RelativeLayout
+        android:id="@+id/rl_enter_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:id="@+id/et_message"
+            android:fontFamily="@font/open_sans_light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/bt_send"
+            android:hint="Ask question..."
+            android:inputType="text" />
+
+        <ImageButton
+            android:id="@+id/bt_send"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:src="@android:drawable/ic_menu_send" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_chatbot_speaking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:background="@color/blueGreenDark"
+        android:padding="@dimen/margin_padding_size_small"
+        android:visibility="gone"
+        android:text="LRTHub's AskBot says . . ."
+        android:textColor="@color/white" />
+
+</RelativeLayout>

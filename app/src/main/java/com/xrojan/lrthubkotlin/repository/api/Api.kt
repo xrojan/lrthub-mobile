@@ -1,5 +1,6 @@
 package com.xrojan.lrthubkotlin.repository.api
 
+import com.xrojan.lrthubkotlin.credentials.Credentials.Companion.apiKey
 import com.xrojan.lrthubkotlin.repository.entities.*
 import io.reactivex.Observable
 import retrofit2.http.*
@@ -37,4 +38,11 @@ interface FeedApi {
     fun getFeeds(
             @Header("Api-Key") apiKey: String,
             @Query("is_featured") isFeatured: Boolean): Observable<RequestArray<List<Feed>>>
+}
+
+interface ChatbotApi {
+    @POST("https://lrthub.azurewebsites.net/qnamaker/knowledgebases/43941e99-7626-464a-997d-e49e2b598eb3/generateAnswer")
+    fun queryChatbot(@Header("Authorization") authorization: String,
+                     @Header("Content-Type") contentType: String,
+                     @Body question: Question): Observable<Answers>
 }

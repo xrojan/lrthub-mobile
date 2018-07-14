@@ -1,5 +1,6 @@
 package com.xrojan.lrthubkotlin.viewmodel.data
 
+import com.xrojan.lrthubkotlin.repository.entities.Answer
 import com.xrojan.lrthubkotlin.repository.entities.Request
 import com.xrojan.lrthubkotlin.repository.entities.RequestArray
 
@@ -15,4 +16,8 @@ data class UIData<T>(
 data class UIDataArray<T>(
         val request: RequestArray<T>,
         val error: Throwable? = null
+)
+
+data class ChatbotData(
+        val answer: Answer
 )

@@ -7,6 +7,11 @@
         android:title="Feed" />
 
     <item
+        android:id="@+id/nav_ask"
+        android:icon="@drawable/ic_chatbot"
+        android:title="Ask" />
+
+    <item
         android:id="@+id/nav_traincheck"
         android:icon="@drawable/ic_traincheck"
         android:title="Traincheck" />

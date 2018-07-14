@@ -4,6 +4,9 @@ Thumbs.db
 # OSX files
 .DS_Store
 
+# Sensitive credentials
+app/src/main/java/com/xrojan/lrthubkotlin/credentials/
+
 # built application files
 *.apk
 *.ap_

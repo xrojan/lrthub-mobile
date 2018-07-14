@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_chatbot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_size_small"
+        android:layout_marginTop="@dimen/margin_padding_size_small"
+        android:layout_marginEnd="@dimen/margin_padding_size_xxxxlarge"
+        android:layout_marginBottom="@dimen/margin_padding_size_small"
+        android:background="@drawable/rounded_background_silver_card"
+        android:padding="@dimen/margin_padding_size_medium">
+
+        <TextView
+            android:id="@+id/tv_message_bot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_light"
+            android:text="Hello"
+            android:textColor="@color/flatBlack"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/tv_timestamp_bot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_message_bot"
+            android:fontFamily="@font/open_sans_light"
+            android:text="2018-09-12 10:32AM"
+            android:textAlignment="textStart"
+            android:textColor="@color/silverDark" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_padding_size_xxxxlarge"
+        android:layout_marginTop="@dimen/margin_padding_size_small"
+        android:layout_marginEnd="@dimen/margin_padding_size_small"
+        android:layout_marginBottom="@dimen/margin_padding_size_small"
+        android:background="@drawable/rounded_background_blue_green"
+        android:padding="@dimen/margin_padding_size_medium">
+
+        <TextView
+            android:id="@+id/tv_message_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_light"
+            android:text="Hello"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/tv_timestamp_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_message_user"
+            android:fontFamily="@font/open_sans_light"
+            android:text="2018-09-12 10:32AM"
+            android:textAlignment="textEnd"
+            android:textColor="@color/blueGreenDarker" />
+
+    </RelativeLayout>
+</FrameLayout>

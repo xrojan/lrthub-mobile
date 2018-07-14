@@ -43,3 +43,7 @@ class EVENT_TRACKER {
         val LOGIN = "Login"
     }
 }
+
+enum class ASK_MESSAGE_MODE {
+    USER_SENDER, CHATBOT_SENDER
+}

@@ -8,6 +8,7 @@
     <dimen name="margin_padding_size_xlarge">32dp</dimen>
     <dimen name="margin_padding_size_xxlarge">40dp</dimen>
     <dimen name="margin_padding_size_xxxlarge">60dp</dimen>
+    <dimen name="margin_padding_size_xxxxlarge">90dp</dimen>
 
     <!-- Launcher Icon Size, https://developer.android.com/guide/practices/ui_guidelines/icon_design_launcher.html#size -->
     <dimen name="launcher_icon_size">@dimen/standard_touch_size</dimen>
@@ -32,4 +33,8 @@
     <!-- Radius -->
     <dimen name="radius_small">3dp</dimen>
     <dimen name="elevation_small">5dp</dimen>
+
+    <!-- Messaging -->
+    <dimen name="messaging_height">55dp</dimen>
+    <dimen name="messaging_radius">7dp</dimen>
 </resources>
