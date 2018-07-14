@@ -16,6 +16,9 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import com.crashlytics.android.answers.ContentViewEvent
+
+
 
 /**
  * Created by Joshua de Guzman on 09/07/2018.
@@ -49,6 +52,11 @@ class App : Application() {
         // Fabric
         Fabric.with(this, Crashlytics())
         Fabric.with(this, Answers())
+
+        // TODO: Remove me
+        Answers.getInstance().logContentView(ContentViewEvent()
+                .putContentName("Nido 3 Plus")
+                .putContentType("Advertisements"))
 
         // Networking
         gsonFactory = GsonConverterFactory.create()
