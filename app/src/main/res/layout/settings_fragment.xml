@@ -5,91 +5,253 @@
     android:layout_height="match_parent"
     android:background="@color/flatBlack"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
     >
 
     <ImageView
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/flatBlackDark"
+        android:src="@drawable/sample_bg"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/sample_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
-
-    <TextView
-        android:id="@+id/tv_profile_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Joshua De guzman"
-        android:textAllCaps="true"
-        android:textSize="@dimen/text_size_medium"
-        android:textStyle="bold"
-        android:textColor="@color/silver"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-
-        />
-
-    <TextView
-        android:id="@+id/tv_profile_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="josh@me.com"
-        android:textAllCaps="true"
-        android:textColor="@color/silver"
-        android:textSize="@dimen/text_size_small"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profile_name"
-
-        />
-
-    <TextView
-        android:id="@+id/tv_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Joshua De guzman"
-        android:textAllCaps="true"
-        android:textSize="@dimen/text_size_medium"
-        android:textStyle="bold"
-        android:textColor="@color/silver"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
 
         />
 
     <Button
         android:id="@+id/btn_verify"
         android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/blueGreen"
+        android:textSize="@dimen/text_size_small"
+        android:paddingStart="@dimen/margin_padding_size_small"
+        android:paddingEnd="@dimen/margin_padding_size_small"
+        android:text="update profile"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/red"
+        android:textSize="@dimen/text_size_small"
+        android:paddingStart="@dimen/margin_padding_size_small"
+        android:paddingEnd="@dimen/margin_padding_size_small"
+        android:text="LOGOUT"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/constraint" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/blueGreen"
-        android:paddingStart="@dimen/margin_padding_size_small"
-        android:paddingEnd="@dimen/margin_padding_size_small"
-        android:text="PLEASE WAIT"
-        android:textColor="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+
+        >
+
+        <TextView
+            android:id="@+id/tv_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="center"
+            android:text="Joshua De guzman"
+            android:textAllCaps="true"
+            android:textColor="@color/silver"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="josh@me.com"
+            android:textAllCaps="true"
+            android:textColor="@color/silver"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_mobile_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:textStyle="italic"
+            android:text="mobile no"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/silver"
+            android:textSize="@dimen/text_size_small"
+            />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        tools:layout_editor_absoluteY="379dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_small"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:gravity="center|top"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="address"
+                android:textAllCaps="true"
+                android:textColor="@color/silver"
+                android:textSize="@dimen/text_size_small"
+
+                />
+
+
+            <TextView
+                android:id="@+id/tv_children_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Children no"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/silver"
+                android:textSize="@dimen/text_size_small"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_birthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="BDAY"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/silver"
+                android:textSize="@dimen/text_size_small"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Gender"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/silver"
+                android:textSize="@dimen/text_size_small"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_nationality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Filipino"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/silver"
+                android:textSize="@dimen/text_size_small"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_marital_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Single"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/silver"
+                android:textSize="@dimen/text_size_small"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_employment_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Full time"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/silver"
+                android:textSize="@dimen/text_size_small"
+
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </android.support.constraint.ConstraintLayout>

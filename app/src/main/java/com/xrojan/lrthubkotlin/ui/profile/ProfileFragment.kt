@@ -1,9 +1,7 @@
 package com.xrojan.lrthubkotlin.ui.profile
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.annotation.Nullable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +19,9 @@ import kotlinx.android.synthetic.main.settings_fragment.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.uiThread
+import android.support.v7.app.AppCompatActivity
+
+
 
 /**
  * Created by Joshua de Guzman on 10/07/2018.
@@ -50,17 +51,24 @@ class ProfileFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
     }
 
     private fun initComponents() {
+        btn_verify.isEnabled = false
         subscribe(userViewModel.getUserLocalData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.single())
                 .subscribe {
                     if (it.isNotEmpty()) {
+//                        Log.d(tag, "LAMAN: " + it[0].token + it[0].id)
                         onSuccessFetchLocal(it[0].token, it[0].id)
                     }
                 })
+
+        // Subscribe for User Details
+
+
     }
 
     private fun onSuccessFetchLocal(token: String, uid: Int) {
@@ -68,13 +76,16 @@ class ProfileFragment : BaseFragment() {
         !!.subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.single())
                 .subscribe({
+                    Log.d(tag, it.request.result[0].user.username)
                     when (it.request.statusCode) {
                         HTTP.OK -> {
+                            showUserDetail(it)
                             if (it.request.result.isNotEmpty()) {
                                 // show details and show update button
                                 doAsync {
                                     uiThread {
-                                        toast("Profile OK, show update button")
+//                                        toast("Profile OK, show update button")
+                                        btn_verify.isEnabled = true
                                         btn_verify.text = "UPDATE PROFILE"
                                     }
                                 }
@@ -82,7 +93,8 @@ class ProfileFragment : BaseFragment() {
                                 // show add verify button
                                 doAsync {
                                     uiThread {
-                                        toast("Profile no result, Show add verify button")
+//                                        toast("Profile no result, Show add verify button")
+                                        btn_verify.isEnabled = true
                                         btn_verify.text = "VERIFY PROFILE"
                                     }
                                 }
@@ -98,7 +110,8 @@ class ProfileFragment : BaseFragment() {
                         }
                     }
                 }, {
-                    //                    onFailedLogin()
+                    // onFailedLogin()
+                    Log.d(tag, it.message)
                     doAsync {
                         uiThread {
                             toast("FAILED RETRIEVING USER")
@@ -110,9 +123,23 @@ class ProfileFragment : BaseFragment() {
     private fun showUserDetail(data: UIDataArray<List<UserProfile>>) {
         doAsync {
             uiThread {
-                toast("USER DETAILS OK " + data.request.result[0])
+                tv_profile_name.text = data.request.result[0].user.username
+                tv_profile_email.text = data.request.result[0].user.email
+                tv_birthdate.text = "Birthday: " + data.request.result[0].birthDate
+                tv_mobile_no.text = "Mobile no: " + data.request.result[0].mobileNumber
+                tv_address.text = "Address: " + data.request.result[0].address
+                tv_children_count.text = "Children count: " + data.request.result[0].childrenCount.toString()
+                tv_gender.text = "Gender: " + data.request.result[0].gender.name
+                tv_nationality.text = "Nationality: " + data.request.result[0].nationality.name
+                tv_marital_status.text = "Marital status: " + data.request.result[0].maritalStatus.name
+                tv_employment_status.text = "Employment status: " + data.request.result[0].employmentStatus.name
             }
         }
     }
+
+//    override fun onDetach() {
+//        super.onDetach()
+//        (activity as AppCompatActivity).supportActionBar!!.show()
+//    }
 
 }

@@ -54,7 +54,6 @@ class FeedsFragment : BaseFragment() {
                 .subscribe({
                     showFeaturedFeeds(it)
                 }, {
-//                    showError(tag!!, it.message.toString())
                     doAsync {
                         uiThread {
                             pb_loading.visibility = View.GONE
