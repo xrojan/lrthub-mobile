@@ -18,8 +18,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import com.crashlytics.android.answers.ContentViewEvent
 import com.xrojan.lrthubkotlin.repository.ChatbotRepository
+import com.xrojan.lrthubkotlin.repository.FeedbackRepository
 import com.xrojan.lrthubkotlin.repository.api.ChatbotApi
+import com.xrojan.lrthubkotlin.repository.api.FeedbackApi
 import com.xrojan.lrthubkotlin.viewmodel.ChatbotViewModel
+import com.xrojan.lrthubkotlin.viewmodel.FeedbackViewModel
 
 
 /**
@@ -48,9 +51,14 @@ class App : Application() {
         private lateinit var chatbotRepository: ChatbotRepository
         private lateinit var chatbotViewModel: ChatbotViewModel
 
+        private lateinit var feedbackApi: FeedbackApi
+        private lateinit var feedbackRepository: FeedbackRepository
+        private lateinit var feedbackViewModel: FeedbackViewModel
+
         fun injectUserViewModel() = userViewModel
         fun injectFeedViewModel() = feedViewModel
         fun injectChatbotViewModel() = chatbotViewModel
+        fun injectFeedbackViewModel() = feedbackViewModel
     }
 
     override fun onCreate() {
@@ -91,6 +99,11 @@ class App : Application() {
         chatbotApi = retrofit.create(ChatbotApi::class.java)
         chatbotRepository = ChatbotRepository(chatbotApi)
         chatbotViewModel = ChatbotViewModel(chatbotRepository)
+
+        // Feedback
+        feedbackApi = retrofit.create(FeedbackApi::class.java)
+        feedbackRepository = FeedbackRepository(feedbackApi, getString(R.string.demo_api_key))
+        feedbackViewModel = FeedbackViewModel(feedbackRepository)
 
     }
 

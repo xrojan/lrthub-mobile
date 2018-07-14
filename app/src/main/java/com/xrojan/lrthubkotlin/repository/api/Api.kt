@@ -46,3 +46,19 @@ interface ChatbotApi {
                      @Header("Content-Type") contentType: String,
                      @Body question: Question): Observable<Answers>
 }
+
+interface FeedbackApi {
+    @GET("/api/v1/feedback/")
+    fun getFeedbackConversations(@Header("Authorization") authorization: String): Observable<RequestArray<List<FeedbackConversation>>>
+
+    @FormUrlEncoded
+    @POST("/api/v1/feedback/create/")
+    fun createNewFeedbackConversation(@Query("full_name") fullName: String,
+                                      @Query("address") address: String,
+                                      @Query("contact_number") contactNumber: String,
+                                      @Query("employee_name") employeeName: String,
+                                      @Query("incident_date") incidentDate: String,
+                                      @Query("incident_subject") incidentSubject: String,
+                                      @Query("sender_id") senderID: String,
+                                      @Query("receiver_id") receiverId: String): Observable<Request<FeedbackConversation>>
+}
