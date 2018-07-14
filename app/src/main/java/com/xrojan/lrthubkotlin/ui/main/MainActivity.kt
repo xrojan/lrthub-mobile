@@ -6,14 +6,13 @@ import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.activities.BaseActivity
 import com.xrojan.lrthubkotlin.ui.feed.FeedsFragment
 import com.xrojan.lrthubkotlin.ui.feedback.FeedbackFragment
-import com.xrojan.lrthubkotlin.ui.settings.SettingsFragment
+import com.xrojan.lrthubkotlin.ui.profile.ProfileFragment
 import com.xrojan.lrthubkotlin.ui.traincheck.TraincheckFragment
 import kotlinx.android.synthetic.main.main_activity.*
 import android.app.SearchManager
 import android.content.ComponentName
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import com.xrojan.lrthubkotlin.App
@@ -32,7 +31,7 @@ class MainActivity : BaseActivity() {
     private lateinit var feedsFragment: FeedsFragment
     private lateinit var traincheckFragment: TraincheckFragment
     private lateinit var feedbackFragment: FeedbackFragment
-    private lateinit var settingsFragment: SettingsFragment
+    private lateinit var profileFragment: ProfileFragment
     private lateinit var searchFeedAdapter: SearchFeedAdapter
     var feedItems = ArrayList<String>()
 
@@ -43,7 +42,7 @@ class MainActivity : BaseActivity() {
             feedsFragment = FeedsFragment.newInstance()
             traincheckFragment = TraincheckFragment.newInstance()
             feedbackFragment = FeedbackFragment.newInstance()
-            settingsFragment = SettingsFragment.newInstance()
+            profileFragment = ProfileFragment.newInstance()
             initComponents()
             subscribe(feedViewModel.getFeeds("")
                     .subscribeOn(Schedulers.io())
@@ -67,7 +66,7 @@ class MainActivity : BaseActivity() {
                     loadFragment(R.id.fl_container, feedbackFragment, feedbackFragment::class.java.simpleName)
                 }
                 R.id.nav_settings -> {
-                    loadFragment(R.id.fl_container, settingsFragment, settingsFragment::class.java.simpleName)
+                    loadFragment(R.id.fl_container, profileFragment, profileFragment::class.java.simpleName)
                 }
             }
             true

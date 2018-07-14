@@ -9,6 +9,7 @@ import com.xrojan.lrthubkotlin.ui.feed.FeedDetailDialogFragment
 class HTTP {
     companion object {
         val OK = 200
+        val CREATED = 201
         val MULTIPLE_CHOICES = 300
         val MOVED_PERMANENTLY = 301
         val FOUND = 302

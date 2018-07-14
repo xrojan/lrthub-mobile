@@ -9,6 +9,7 @@
 
     <!-- Credentials -->
     <string name="demo_username">demo</string>
+    <string name="demo_email">email@me.com</string>
     <string name="demo_password">demo0000</string>
 
     <!-- Database -->
@@ -16,6 +17,13 @@
 
     <!-- Spiels -->
     <string name="login_invalid">Invalid username or password</string>
+
+    <!-- Text fields -->
+    <string name="empty_text">This field is required</string>
+    <string name="short_text">Must be at least 8 characters</string>
+
+    <!-- Requests -->
+    <string name="invalid_request">INVALID REQUEST</string>
 
     <!-- Form labels, Titles -->
     <string name="search_title">Search</string>

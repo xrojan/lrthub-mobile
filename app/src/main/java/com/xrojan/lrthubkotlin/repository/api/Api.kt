@@ -16,6 +16,13 @@ interface UserApi {
     @POST("/api/v1/token/generate")
     fun loginUser(@Field("username") username: String,
                   @Field("password") password: String): Observable<Request<User>>
+
+    @FormUrlEncoded
+    @POST("/api/v1/users/create/")
+    fun registerUser(@Field("username") username: String,
+                     @Field("password") password: String,
+                     @Field("email") email: String): Observable<Request<User>>
+
 }
 
 interface FeedApi {

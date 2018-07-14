@@ -1,6 +1,5 @@
 package com.xrojan.lrthubkotlin.ui.login
 
-import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +39,11 @@ class LoginActivity : BaseActivity() {
             pb_loading.visibility = View.VISIBLE
             loginUser(et_username.text.toString(), et_password.text.toString())
         }
+
+        tv_sign_up.setOnClickListener {
+            startActivity(Intent(this, SignupActivity::class.java))
+        }
+
     }
 
     private fun loginUser(username: String, password: String) {
@@ -65,7 +69,7 @@ class LoginActivity : BaseActivity() {
                     showError(tag, it.message.toString())
                 }))
     }
-    
+
     private fun onSuccessLogin(data: UIData<User>) {
         Log.e(tag, data.request.result.toString())
         doAsync {

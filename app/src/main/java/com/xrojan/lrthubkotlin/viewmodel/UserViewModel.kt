@@ -19,4 +19,11 @@ class UserViewModel(private val userRepository: UserRepository) {
                 }
     }
 
+    fun registerUser(username: String, password: String, email: String): Observable<UIData<User>> {
+        return userRepository.registerUser(username, password, email)
+                .map {
+                    UIData(it)
+                }
+    }
+
 }

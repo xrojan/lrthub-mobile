@@ -9,8 +9,7 @@ import com.google.gson.annotations.SerializedName
  * Created by Joshua de Guzman on 10/07/2018.
  */
 
-@Entity(tableName = "users")
-data class User(
+data class UserDetail (
         @PrimaryKey
         val uid: Int,
         @ColumnInfo(name = "id")

@@ -29,6 +29,14 @@ class UserRepository(val userApi: UserApi, val userDao: UserDao) {
                 }
     }
 
+    fun registerUser(username: String, password: String, email: String): Observable<Request<User>> {
+        return userApi.registerUser(username, password, email)
+                .doOnNext {
+                    // Register User
+                    Log.e(tag, it.result.toString())
+                }
+    }
+
     /**
      * Stores users in the local database
      * @param user

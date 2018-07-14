@@ -1,4 +1,4 @@
-package com.xrojan.lrthubkotlin.ui.settings
+package com.xrojan.lrthubkotlin.ui.profile
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -13,10 +13,10 @@ import com.xrojan.lrthubkotlin.ui.main.MainViewModel
  * Created by Joshua de Guzman on 10/07/2018.
  */
 
-class SettingsFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     companion object {
-        fun newInstance() = SettingsFragment()
+        fun newInstance() = ProfileFragment()
     }
 
     private lateinit var viewModel: MainViewModel
