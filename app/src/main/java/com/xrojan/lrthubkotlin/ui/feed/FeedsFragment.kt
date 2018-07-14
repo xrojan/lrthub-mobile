@@ -47,6 +47,11 @@ class FeedsFragment : BaseFragment() {
         return inflater.inflate(R.layout.feeds_fragment, container, false)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        disposeSubscriptions()
+    }
+
     private fun initComponents() {
         subscribe(feedViewModel.getFeeds(true)
                 .subscribeOn(Schedulers.io())

@@ -50,6 +50,11 @@ class ChatbotFragment : BaseFragment() {
         initComponents()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        disposeSubscriptions()
+    }
+
     private fun initComponents() {
         // Setup recycler view
         askMessages = ArrayList()

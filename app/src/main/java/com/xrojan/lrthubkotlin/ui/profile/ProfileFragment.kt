@@ -52,6 +52,11 @@ class ProfileFragment : BaseFragment() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        disposeSubscriptions()
+    }
+
     private fun initComponents() {
         subscribe(userViewModel.getUserLocalData()
                 .subscribeOn(Schedulers.io())

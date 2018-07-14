@@ -22,6 +22,13 @@ open class BaseFragment : Fragment() {
     }
 
     /**
+     * Clears subscriptions on demand
+     */
+    fun disposeSubscriptions(){
+        subscriptions.clear()
+    }
+
+    /**
      * Base error logging
      * @param message
      */
