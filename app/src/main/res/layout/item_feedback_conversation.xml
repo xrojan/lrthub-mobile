@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/margin_padding_size_micro"
-    android:layout_marginRight="@dimen/margin_padding_size_micro"
     android:layout_marginBottom="@dimen/margin_padding_size_micro"
     android:background="@drawable/rounded_background_white_card"
-    app:cardCornerRadius="@dimen/radius_small">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -50,4 +48,9 @@
                 android:textSize="@dimen/text_size_micro" />
         </LinearLayout>
     </RelativeLayout>
-</android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/silver" />
+</LinearLayout>
