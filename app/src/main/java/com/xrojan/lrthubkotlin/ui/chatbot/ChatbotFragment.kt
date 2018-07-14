@@ -17,6 +17,7 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.chatbot_fragment.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -100,7 +101,9 @@ class ChatbotFragment : BaseFragment() {
     }
 
     private fun serializeAskMessage(question: String, askMessageMode: ASK_MESSAGE_MODE): AskMessage {
-        return AskMessage(question, Date().time.toString(), askMessageMode)
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy KK:mm a")
+        val millisInString = dateFormat.format(Date())
+        return AskMessage(question, millisInString, askMessageMode)
     }
 
     private fun updateMessageStack(data: AskMessage) {

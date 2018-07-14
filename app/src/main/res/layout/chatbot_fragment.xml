@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/bt_send"
             android:hint="Ask question..."
+            android:textSize="@dimen/text_size_medium"
             android:inputType="text" />
 
         <ImageButton
