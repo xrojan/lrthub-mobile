@@ -9,7 +9,7 @@
     <item
         android:id="@+id/nav_ask"
         android:icon="@drawable/ic_chatbot"
-        android:title="Ask" />
+        android:title="AskBot" />
 
     <item
         android:id="@+id/nav_traincheck"

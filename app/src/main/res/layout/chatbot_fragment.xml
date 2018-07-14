@@ -16,24 +16,33 @@
         android:id="@+id/rl_enter_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@color/silver">
 
         <EditText
             android:id="@+id/et_message"
-            android:fontFamily="@font/open_sans_light"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_toLeftOf="@id/bt_send"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/open_sans_light"
             android:hint="Ask question..."
-            android:textSize="@dimen/text_size_medium"
-            android:inputType="text" />
+            android:layout_centerVertical="true"
+            android:inputType="text"
+            android:paddingLeft="@dimen/margin_padding_size_small"
+            android:layout_marginLeft="@dimen/margin_padding_size_small"
+            android:textSize="@dimen/text_size_medium" />
 
         <ImageButton
             android:id="@+id/bt_send"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
-            android:src="@android:drawable/ic_menu_send" />
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:padding="14dp"
+            android:src="@drawable/ic_send"
+            android:tint="@color/blueGreen" />
 
     </RelativeLayout>
 
@@ -46,8 +55,8 @@
         android:layout_marginBottom="50dp"
         android:background="@color/blueGreenDark"
         android:padding="@dimen/margin_padding_size_small"
-        android:visibility="gone"
         android:text="LRTHub's AskBot says . . ."
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        android:visibility="gone" />
 
 </RelativeLayout>
