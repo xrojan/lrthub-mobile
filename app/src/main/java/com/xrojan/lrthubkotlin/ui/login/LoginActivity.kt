@@ -25,7 +25,7 @@ import org.jetbrains.anko.uiThread
 class LoginActivity : BaseActivity() {
     private val tag = LoginActivity::class.java.simpleName
     private val userViewModel: UserViewModel = App.injectUserViewModel()
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)

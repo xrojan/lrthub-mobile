@@ -2,10 +2,14 @@ package com.xrojan.lrthubkotlin.ui.feed
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.LinearSnapHelper
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.SnapHelper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.adapters.FeedAdapter
@@ -50,7 +54,7 @@ class FeedsFragment : BaseFragment() {
                 .subscribe({
                     showFeaturedFeeds(it)
                 }, {
-                    showError(tag!!, it.message.toString())
+//                    showError(tag!!, it.message.toString())
                     doAsync {
                         uiThread {
                             pb_loading.visibility = View.GONE
@@ -64,7 +68,7 @@ class FeedsFragment : BaseFragment() {
                 .subscribe({
                     showFeeds(it)
                 }, {
-                    showError(tag!!, it.message.toString())
+//                    showError(tag!!, it.message.toString())
                     doAsync {
                         uiThread {
                             pb_loading.visibility = View.GONE
@@ -77,13 +81,27 @@ class FeedsFragment : BaseFragment() {
         Log.e(tag!!, data.toString())
         doAsync {
             uiThread {
-                rv_featured_feeds.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                rv_featured_feeds.layoutManager = layoutManager
 
                 val feedAdapter = FeedAdapter(context!!, data.request.result, true)
                 feedAdapter.onItemClick = {
                     feedDetailDialogFragment = FeedDetailDialogFragment()
                     feedDetailDialogFragment.show(fragmentManager, TAG.FEED_DETAIL, data.request.result[it])
                 }
+//                val snapHelper: SnapHelper()
+                val snapHelper: SnapHelper = LinearSnapHelper()
+                snapHelper.attachToRecyclerView(rv_featured_feeds)
+                rv_featured_feeds.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+                    override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+                        super.onScrollStateChanged(recyclerView, newState)
+                        if(newState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+                            val centerView = snapHelper.findSnapView(layoutManager)
+                            val int = layoutManager.getPosition(centerView)
+                        }
+                    }
+                })
+//                rv_featured_feeds.
 
                 rv_featured_feeds.adapter = feedAdapter
                 pb_loading.visibility = View.GONE

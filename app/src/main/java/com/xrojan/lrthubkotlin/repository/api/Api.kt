@@ -1,9 +1,6 @@
 package com.xrojan.lrthubkotlin.repository.api
 
-import com.xrojan.lrthubkotlin.repository.entities.Feed
-import com.xrojan.lrthubkotlin.repository.entities.Request
-import com.xrojan.lrthubkotlin.repository.entities.RequestArray
-import com.xrojan.lrthubkotlin.repository.entities.User
+import com.xrojan.lrthubkotlin.repository.entities.*
 import io.reactivex.Observable
 import retrofit2.http.*
 
@@ -23,6 +20,11 @@ interface UserApi {
                      @Field("password") password: String,
                      @Field("email") email: String): Observable<Request<User>>
 
+    @GET("/api/v1/users/profile/")
+    fun getUserDetail(
+            @Header("Api-Key") apiKey: String,
+            @Header("Authorization") token: String,
+            @Query("user_id") userId: Int): Observable<RequestArray<List<UserProfile>>>
 }
 
 interface FeedApi {

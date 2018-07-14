@@ -2,6 +2,7 @@ package com.xrojan.lrthubkotlin.repository.db
 
 import android.arch.persistence.room.*
 import com.xrojan.lrthubkotlin.repository.entities.User
+import io.reactivex.Single
 
 
 /**
@@ -11,7 +12,7 @@ import com.xrojan.lrthubkotlin.repository.entities.User
 @Dao
 interface UserDao {
     @Query("SELECT * FROM users")
-    fun getUsers(): List<User>
+    fun getUsers(): Single<List<User>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
