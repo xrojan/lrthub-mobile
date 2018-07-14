@@ -1,9 +1,9 @@
 package com.xrojan.lrthubkotlin.ui.feed
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
-import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -47,12 +47,38 @@ class FeedDetailDialogFragment : DialogFragment() {
     }
 
     private fun renderUI(feed: Feed) {
+        // Setup listeners
+        sv_main.viewTreeObserver.addOnScrollChangedListener({
+            val rect = Rect()
+            sv_main.getHitRect(rect)
+            if (v_bounds.getLocalVisibleRect(rect)) {
+                ib_scroll_to_top.visibility = View.GONE
+            } else {
+                ib_scroll_to_top.visibility = View.VISIBLE
+            }
+        })
+
+        ib_scroll_to_top.visibility = View.GONE
+        ib_scroll_to_top.setOnClickListener { onScrollToTop() }
+
         // Render details
         collapsing_toolbar.title = feed.title
+        tv_title.text = feed.title
+        tv_content.text = feed.content
+        tv_date_posted.text = "POSTED ON " + feed.datePosted
+
 
         // Render cover image
         Glide.with(context!!)
                 .load(feed.coverImage)
                 .into(iv_cover_image)
+
+    }
+
+    private fun onScrollToTop() {
+        sv_main.fling(0)
+        sv_main.fullScroll(View.FOCUS_UP)
+        sv_main.scrollTo(0, 0)
+        ib_scroll_to_top.visibility = View.GONE
     }
 }
