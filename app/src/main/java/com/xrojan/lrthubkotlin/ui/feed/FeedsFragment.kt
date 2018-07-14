@@ -90,17 +90,17 @@ class FeedsFragment : BaseFragment() {
                     feedDetailDialogFragment.show(fragmentManager, TAG.FEED_DETAIL, data.request.result[it])
                 }
 //                val snapHelper: SnapHelper()
-                val snapHelper: SnapHelper = LinearSnapHelper()
-                snapHelper.attachToRecyclerView(rv_featured_feeds)
-                rv_featured_feeds.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-                    override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-                        super.onScrollStateChanged(recyclerView, newState)
-                        if(newState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
-                            val centerView = snapHelper.findSnapView(layoutManager)
-                            val int = layoutManager.getPosition(centerView)
-                        }
-                    }
-                })
+//                val snapHelper: SnapHelper = LinearSnapHelper()
+//                snapHelper.attachToRecyclerView(rv_featured_feeds)
+//                rv_featured_feeds.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+//                    override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+//                        super.onScrollStateChanged(recyclerView, newState)
+//                        if(newState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+//                            val centerView = snapHelper.findSnapView(layoutManager)
+//                            val int = layoutManager.getPosition(centerView)
+//                        }
+//                    }
+//                })
 //                rv_featured_feeds.
 
                 rv_featured_feeds.adapter = feedAdapter

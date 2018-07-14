@@ -1,8 +1,9 @@
 package com.xrojan.lrthubkotlin.ui.profile
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.annotation.Nullable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,8 @@ import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.constants.HTTP
 import com.xrojan.lrthubkotlin.fragments.BaseFragment
-import com.xrojan.lrthubkotlin.repository.entities.Feed
 import com.xrojan.lrthubkotlin.repository.entities.UserProfile
 import com.xrojan.lrthubkotlin.ui.main.MainViewModel
-import com.xrojan.lrthubkotlin.viewmodel.FeedViewModel
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import com.xrojan.lrthubkotlin.viewmodel.data.UIDataArray
 import io.reactivex.schedulers.Schedulers
@@ -51,26 +50,17 @@ class ProfileFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
-
     }
 
     private fun initComponents() {
-// FIXME: Get user from local database
-//        subscribe(userViewModel.getUserLocalData()
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(Schedulers.single())
-//                .subscribe {
-//                    if(it.isNotEmpty()){
-//                        onSuccessFetchLocal(it[0].token, it[0].uid)
-//                    }
-//                })
-
-        onSuccessFetchLocal("JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJ1c2VybmFtZSI6ImRlbW8iLCJleHAiOjE1MzE1NjA3MTAsImVtYWlsIjoiZGVtb0B4cm9qYW4uY29tIiwib3JpZ19pYXQiOjE1MzE1NTcxMTB9.GTlZU3BdRZaucCtUn1a1o2vDny8Vhy7THGOoR4xuCSM",
-                3)
-
-//        onSuccessFetchLocal(userViewModel.getUserLocalData())
-
+        subscribe(userViewModel.getUserLocalData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.single())
+                .subscribe {
+                    if (it.isNotEmpty()) {
+                        onSuccessFetchLocal(it[0].token, it[0].id)
+                    }
+                })
     }
 
     private fun onSuccessFetchLocal(token: String, uid: Int) {
@@ -80,7 +70,7 @@ class ProfileFragment : BaseFragment() {
                 .subscribe({
                     when (it.request.statusCode) {
                         HTTP.OK -> {
-                            if(it.request.result.isNotEmpty()){
+                            if (it.request.result.isNotEmpty()) {
                                 // show details and show update button
                                 doAsync {
                                     uiThread {
@@ -88,7 +78,7 @@ class ProfileFragment : BaseFragment() {
                                         btn_verify.text = "UPDATE PROFILE"
                                     }
                                 }
-                            }else{
+                            } else {
                                 // show add verify button
                                 doAsync {
                                     uiThread {

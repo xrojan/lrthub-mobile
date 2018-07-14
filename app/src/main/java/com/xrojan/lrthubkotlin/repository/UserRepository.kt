@@ -9,7 +9,6 @@ import com.xrojan.lrthubkotlin.repository.entities.RequestArray
 import com.xrojan.lrthubkotlin.repository.entities.User
 import com.xrojan.lrthubkotlin.repository.entities.UserProfile
 import io.reactivex.Observable
-import io.reactivex.internal.operators.observable.ObservableError
 import io.reactivex.schedulers.Schedulers
 
 /**
@@ -66,7 +65,7 @@ class UserRepository(val userApi: UserApi, val userDao: UserDao, val apikey: Str
                 }
     }
 
-    fun getUserCredentials(): Observable<List<User>> {
+    fun getUserLocalData(): Observable<List<User>> {
         return userDao.getUsers().filter { it.isNotEmpty() }
                 .toObservable()
                 .doOnNext {

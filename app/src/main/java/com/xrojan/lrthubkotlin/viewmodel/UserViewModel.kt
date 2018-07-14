@@ -1,5 +1,7 @@
 package com.xrojan.lrthubkotlin.viewmodel
 
+import android.arch.lifecycle.LiveData
+import android.util.Log
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.UserRepository
 import com.xrojan.lrthubkotlin.repository.entities.Feed
@@ -36,8 +38,8 @@ class UserViewModel(private val userRepository: UserRepository) {
                 }
     }
 
-    fun getUserLocalData(): Observable<List<User>>{
-        return userRepository.getUserCredentials()
+    fun getUserLocalData(): Observable<List<User>> {
+        return userRepository.getUserLocalData()
                 .map {
                     it
                 }

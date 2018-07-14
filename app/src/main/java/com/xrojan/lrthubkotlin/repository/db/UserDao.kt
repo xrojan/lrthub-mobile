@@ -1,5 +1,6 @@
 package com.xrojan.lrthubkotlin.repository.db
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.xrojan.lrthubkotlin.repository.entities.User
 import io.reactivex.Single
