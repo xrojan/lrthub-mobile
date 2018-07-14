@@ -19,7 +19,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import com.crashlytics.android.answers.ContentViewEvent
 
 
-
 /**
  * Created by Joshua de Guzman on 09/07/2018.
  */
@@ -55,8 +54,12 @@ class App : Application() {
 
         // TODO: Remove me
         Answers.getInstance().logContentView(ContentViewEvent()
-                .putContentName("Nido 3 Plus")
-                .putContentType("Advertisements"))
+                .putCustomAttribute("User Logged In", "Male")
+                .putCustomAttribute("User Logged In", "Female")
+                .putCustomAttribute("Feeds/News", "LRMC launches 2018 Hackatren")
+                .putCustomAttribute("Feeds/News", "Hackatren 2018 Winners Declared")
+                .putCustomAttribute("Advertisements", "Nido 3 Plus")
+                .putCustomAttribute("Advertisements", "Milo"))
 
         // Networking
         gsonFactory = GsonConverterFactory.create()
