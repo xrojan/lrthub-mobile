@@ -9,7 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.crashlytics.android.answers.Answers
+import com.crashlytics.android.answers.ContentViewEvent
 import com.xrojan.lrthubkotlin.R
+import com.xrojan.lrthubkotlin.constants.EVENT_TRACKER
 import com.xrojan.lrthubkotlin.repository.entities.Feed
 import kotlinx.android.synthetic.main.feed_detail_dialog_fragment.*
 
@@ -47,6 +50,19 @@ class FeedDetailDialogFragment : DialogFragment() {
     }
 
     private fun renderUI(feed: Feed) {
+        // Track events
+        Answers.getInstance().logContentView(ContentViewEvent()
+                .putCustomAttribute(EVENT_TRACKER.FEED, feed.title)
+                .putCustomAttribute(EVENT_TRACKER.FEED_CATEGORY, feed.feedType.name))
+
+        if (feed.isFeatured) {
+            Answers.getInstance().logContentView(ContentViewEvent()
+                    .putCustomAttribute(EVENT_TRACKER.FEED_FEATURED, feed.title))
+        } else {
+            Answers.getInstance().logContentView(ContentViewEvent()
+                    .putCustomAttribute(EVENT_TRACKER.FEED_NON_FEATURED, feed.title))
+        }
+
         // Setup listeners
         sv_main.viewTreeObserver.addOnScrollChangedListener({
             val rect = Rect()

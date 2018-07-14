@@ -12,8 +12,12 @@ import com.google.gson.annotations.SerializedName
 data class Feed(
         @SerializedName("id")
         var id: Int,
+        @SerializedName("is_featured")
+        var isFeatured: Boolean,
         @SerializedName("type_id")
         var typeId: Int,
+        @SerializedName("type")
+        var feedType: FeedType,
         @SerializedName("cover_image")
         var coverImage: String,
         @SerializedName("title")

@@ -32,3 +32,14 @@ class TAG {
         val FEED_DETAIL = FeedDetailDialogFragment::class.java.simpleName
     }
 }
+
+class EVENT_TRACKER {
+    companion object {
+        val ADS = "Advertisement"
+        val FEED = "Feeds/News"
+        val FEED_CATEGORY = "Feed Category"
+        val FEED_FEATURED = "Featured Feed"
+        val FEED_NON_FEATURED = "Non Featured Feed"
+        val LOGIN = "Login"
+    }
+}
