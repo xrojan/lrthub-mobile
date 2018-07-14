@@ -20,17 +20,16 @@ interface UserApi {
                      @Field("password") password: String,
                      @Field("email") email: String): Observable<Request<User>>
 
-//    @GET("/api/v1/users/profile/")
-//    fun getUserDetail(
-//            @Header("Api-Key") apiKey: String,
-//            @Header("Authorization") token: String,
-//            @Query("user_id") userId: Int): Observable<RequestArray<List<UserProfile>>>zz
-
     @GET("/api/v1/users/profile/")
     fun getUserDetail(
             @Header("Api-Key") apiKey: String,
             @Header("Authorization") token: String,
             @Query("user_id") userId: Int): Observable<RequestArray<List<UserProfile>>>
+
+    @GET("/api/v1/users/profile/options/gender/")
+    fun getGenders(
+            @Header("Api-Key") apiKey: String,
+            @Header("Authorization") token: String): Observable<RequestArray<List<Gender>>>
 
 }
 

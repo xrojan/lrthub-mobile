@@ -1,6 +1,7 @@
 package com.xrojan.lrthubkotlin.ui.profile
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,18 +10,18 @@ import android.view.ViewGroup
 import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.R
 import com.xrojan.lrthubkotlin.constants.HTTP
+import com.xrojan.lrthubkotlin.constants.TAG
 import com.xrojan.lrthubkotlin.fragments.BaseFragment
 import com.xrojan.lrthubkotlin.repository.entities.UserProfile
+import com.xrojan.lrthubkotlin.ui.feed.FeedDetailDialogFragment
 import com.xrojan.lrthubkotlin.ui.main.MainViewModel
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import com.xrojan.lrthubkotlin.viewmodel.data.UIDataArray
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.settings_fragment.*
+import kotlinx.android.synthetic.main.profile_fragment.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.uiThread
-import android.support.v7.app.AppCompatActivity
-
 
 
 /**
@@ -29,6 +30,7 @@ import android.support.v7.app.AppCompatActivity
 
 class ProfileFragment : BaseFragment() {
     private val userViewModel: UserViewModel = App.injectUserViewModel()
+    private lateinit var updateProfileDialogFragment: UpdateProfileDialogFragment
 
     companion object {
         fun newInstance() = ProfileFragment()
@@ -45,7 +47,7 @@ class ProfileFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.settings_fragment, container, false)
+        return inflater.inflate(R.layout.profile_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,7 +57,6 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun initComponents() {
-        btn_verify.isEnabled = false
         subscribe(userViewModel.getUserLocalData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.single())
@@ -66,8 +67,23 @@ class ProfileFragment : BaseFragment() {
                     }
                 })
 
-        // Subscribe for User Details
+        doAsync {
+            uiThread {
+                btn_verify.isEnabled = false
+            }
+        }
 
+    }
+
+    private fun showUpdateDialog(data: UIDataArray<List<UserProfile>>) {
+        btn_verify.setOnClickListener {
+            doAsync {
+                uiThread {
+                    updateProfileDialogFragment = UpdateProfileDialogFragment()
+                    updateProfileDialogFragment.show(fragmentManager, "Update Profile", data)
+                }
+            }
+        }
 
     }
 
@@ -80,6 +96,7 @@ class ProfileFragment : BaseFragment() {
                     when (it.request.statusCode) {
                         HTTP.OK -> {
                             showUserDetail(it)
+                            showUpdateDialog(it)
                             if (it.request.result.isNotEmpty()) {
                                 // show details and show update button
                                 doAsync {
@@ -99,6 +116,7 @@ class ProfileFragment : BaseFragment() {
                                     }
                                 }
                             }
+
                         }
 
                         HTTP.FORBIDDEN -> {
@@ -133,6 +151,8 @@ class ProfileFragment : BaseFragment() {
                 tv_nationality.text = "Nationality: " + data.request.result[0].nationality.name
                 tv_marital_status.text = "Marital status: " + data.request.result[0].maritalStatus.name
                 tv_employment_status.text = "Employment status: " + data.request.result[0].employmentStatus.name
+                tv_salary.text = "Salary: " + data.request.result[0].salary
+
             }
         }
     }

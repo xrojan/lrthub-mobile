@@ -5,6 +5,7 @@ import android.util.Log
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.UserRepository
 import com.xrojan.lrthubkotlin.repository.entities.Feed
+import com.xrojan.lrthubkotlin.repository.entities.Gender
 import com.xrojan.lrthubkotlin.repository.entities.User
 import com.xrojan.lrthubkotlin.repository.entities.UserProfile
 import com.xrojan.lrthubkotlin.viewmodel.data.UIDataArray
@@ -31,7 +32,7 @@ class UserViewModel(private val userRepository: UserRepository) {
                 }
     }
 
-    fun getUserDetail(token: String, userId: Int): Observable<UIDataArray<List<UserProfile>>>? {
+    fun getUserDetail(token: String, userId: Int): Observable<UIDataArray<List<UserProfile>>> {
         return userRepository.getUserDetail(token, userId)
                 .map {
                     UIDataArray(it)
@@ -42,6 +43,13 @@ class UserViewModel(private val userRepository: UserRepository) {
         return userRepository.getUserLocalData()
                 .map {
                     it
+                }
+    }
+
+    fun getGenders(token: String): Observable<UIDataArray<List<Gender>>> {
+        return userRepository.getGenders(token)
+                .map {
+                    UIDataArray(it)
                 }
     }
 
