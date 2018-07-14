@@ -12,30 +12,45 @@ import kotlinx.android.synthetic.main.main_activity.*
 import android.app.SearchManager
 import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
+import com.bumptech.glide.Glide
+import com.crashlytics.android.answers.Answers
+import com.crashlytics.android.answers.ContentViewEvent
 import com.xrojan.lrthubkotlin.App
 import com.xrojan.lrthubkotlin.activities.SearchableActivity
 import com.xrojan.lrthubkotlin.adapters.SearchFeedAdapter
+import com.xrojan.lrthubkotlin.constants.EVENT_TRACKER
+import com.xrojan.lrthubkotlin.repository.entities.Ad
 import com.xrojan.lrthubkotlin.repository.entities.Feed
 import com.xrojan.lrthubkotlin.ui.chatbot.ChatbotFragment
+import com.xrojan.lrthubkotlin.viewmodel.AdViewModel
 import com.xrojan.lrthubkotlin.viewmodel.FeedViewModel
 import com.xrojan.lrthubkotlin.viewmodel.data.UIDataArray
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.main_activity.view.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.image
 import org.jetbrains.anko.uiThread
+import java.util.*
 
 
 class MainActivity : BaseActivity() {
+    private val tag = MainActivity::class.java.simpleName
     private val feedViewModel: FeedViewModel = App.injectFeedViewModel()
+    private val adViewModel: AdViewModel = App.injectAdViewModel()
+
     private lateinit var feedsFragment: FeedsFragment
     private lateinit var traincheckFragment: TraincheckFragment
     private lateinit var chatbotFragment: ChatbotFragment
     private lateinit var feedbackFragment: FeedbackFragment
     private lateinit var profileFragment: ProfileFragment
     private lateinit var searchFeedAdapter: SearchFeedAdapter
-    var feedItems = ArrayList<String>()
+    private lateinit var adList: List<Ad>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +67,8 @@ class MainActivity : BaseActivity() {
                     .observeOn(Schedulers.single())
                     .subscribe({
                         populateFeedItemSearch(it)
+                    }, {
+                        Log.e(tag, it.message)
                     }))
         }
     }
@@ -137,6 +154,51 @@ class MainActivity : BaseActivity() {
                 rv_feeds_search.layoutManager = LinearLayoutManager(applicationContext)
                 searchFeedAdapter = SearchFeedAdapter(applicationContext, data.request.result)
                 rv_feeds_search.adapter = searchFeedAdapter
+            }
+        }
+
+        // Request for ads after feed items
+        subscribe(adViewModel.getAds()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.single())
+                .subscribe({
+                    populateAds(it)
+                }, {
+                    Log.e(tag, it.message)
+                }))
+    }
+
+    private fun populateAds(data: UIDataArray<List<Ad>>) {
+        doAsync {
+            uiThread {
+                // Run ads here
+                iv_banner_ad_view.visibility = View.VISIBLE
+
+                // FIXME
+                // Randomize ads
+                val rand = Random()
+
+                // Get target ads
+                val ad: Ad = data.request.result[rand.nextInt(data.request.result.size)]
+
+                // Render banner image
+                Glide.with(applicationContext)
+                        .load(ad.bannerAdImage)
+                        .into(iv_banner_ad_view.iv_banner_ad_view)
+
+                iv_banner_ad_view.setOnClickListener {
+                    // Add event trackers
+                    Answers.getInstance().logContentView(ContentViewEvent()
+                            .putCustomAttribute(EVENT_TRACKER.ADS, ad.title))
+
+                    // Add url intent
+                    if (!ad.adUrl.isEmpty()) {
+                        val url = ad.adUrl
+                        val i = Intent(Intent.ACTION_VIEW)
+                        i.data = Uri.parse(url)
+                        startActivity(i)
+                    }
+                }
             }
         }
     }

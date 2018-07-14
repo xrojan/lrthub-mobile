@@ -4,25 +4,16 @@ import android.app.Application
 import android.arch.persistence.room.Room
 import com.crashlytics.android.Crashlytics
 import com.crashlytics.android.answers.Answers
-import com.xrojan.lrthubkotlin.repository.FeedRepository
-import com.xrojan.lrthubkotlin.repository.UserRepository
-import com.xrojan.lrthubkotlin.repository.api.FeedApi
-import com.xrojan.lrthubkotlin.repository.api.UserApi
 import com.xrojan.lrthubkotlin.repository.db.AppDatabase
-import com.xrojan.lrthubkotlin.viewmodel.FeedViewModel
-import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
 import io.fabric.sdk.android.Fabric
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import com.crashlytics.android.answers.ContentViewEvent
-import com.xrojan.lrthubkotlin.repository.ChatbotRepository
-import com.xrojan.lrthubkotlin.repository.FeedbackRepository
-import com.xrojan.lrthubkotlin.repository.api.ChatbotApi
-import com.xrojan.lrthubkotlin.repository.api.FeedbackApi
-import com.xrojan.lrthubkotlin.viewmodel.ChatbotViewModel
-import com.xrojan.lrthubkotlin.viewmodel.FeedbackViewModel
+import com.xrojan.lrthubkotlin.repository.*
+import com.xrojan.lrthubkotlin.repository.api.*
+import com.xrojan.lrthubkotlin.viewmodel.*
 
 
 /**
@@ -55,10 +46,15 @@ class App : Application() {
         private lateinit var feedbackRepository: FeedbackRepository
         private lateinit var feedbackViewModel: FeedbackViewModel
 
+        private lateinit var adApi: AdApi
+        private lateinit var adRepository: AdRepository
+        private lateinit var adViewModel: AdViewModel
+
         fun injectUserViewModel() = userViewModel
         fun injectFeedViewModel() = feedViewModel
         fun injectChatbotViewModel() = chatbotViewModel
         fun injectFeedbackViewModel() = feedbackViewModel
+        fun injectAdViewModel() = adViewModel
     }
 
     override fun onCreate() {
@@ -104,6 +100,11 @@ class App : Application() {
         feedbackApi = retrofit.create(FeedbackApi::class.java)
         feedbackRepository = FeedbackRepository(feedbackApi, getString(R.string.demo_api_key))
         feedbackViewModel = FeedbackViewModel(feedbackRepository)
+
+        // Ads
+        adApi = retrofit.create(AdApi::class.java)
+        adRepository = AdRepository(adApi, getString(R.string.demo_api_key))
+        adViewModel = AdViewModel(adRepository)
 
     }
 

@@ -70,3 +70,8 @@ interface FeedbackApi {
                                  @Field("sender_id") senderId: Int,
                                  @Field("receiver_id") receiverId: Int): Observable<Request<FeedbackConversation>>
 }
+
+interface AdApi {
+    @GET("/api/v1/ads/")
+    fun getAds(@Header("Api-Key") apiKey: String): Observable<RequestArray<List<Ad>>>
+}

@@ -95,7 +95,7 @@ class FeedbackFragment : BaseFragment() {
                 val feedbackAdapter: FeedbackAdapter = FeedbackAdapter(context!!, data.request.result)
                 feedbackAdapter.onItemClick = {
                     val feedbackDetailDialogFragment = FeedbackDetailDialogFragment()
-                    feedbackDetailDialogFragment.show(activity!!.fragmentManager, feedbackDetailDialogFragment::class.java.simpleName, data.request.result[it].id, this)
+                    feedbackDetailDialogFragment.show(activity!!.fragmentManager, feedbackDetailDialogFragment::class.java.simpleName, data.request.result[it].id)
                 }
                 rv_feedback_conversations.adapter = feedbackAdapter
             }
