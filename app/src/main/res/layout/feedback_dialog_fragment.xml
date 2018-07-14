@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/silver"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/et_incident_subject"
+            android:layout_width="match_parent"
+            android:textColor="@color/flatBlack"
+            android:textColorHint="@color/silverDark"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Incident subject"
+            android:inputType="text"
+            android:padding="@dimen/margin_padding_size_medium"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/et_incident_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/flatBlack"
+            android:textColorHint="@color/silverDark"
+            android:layout_marginLeft="@dimen/margin_padding_size_small"
+            android:layout_marginRight="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Incident date"
+            android:inputType="datetime"
+            android:padding="@dimen/margin_padding_size_medium"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/et_fullname"
+            android:layout_width="match_parent"
+            android:textColor="@color/flatBlack"
+            android:textColorHint="@color/silverDark"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_padding_size_small"
+            android:layout_marginRight="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Full name"
+            android:inputType="text"
+            android:padding="@dimen/margin_padding_size_medium"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/et_address"
+            android:textColor="@color/flatBlack"
+            android:textColorHint="@color/silverDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_padding_size_small"
+            android:layout_marginRight="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Address"
+            android:inputType="text"
+            android:padding="@dimen/margin_padding_size_medium"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/et_contact_number"
+            android:layout_width="match_parent"
+            android:textColor="@color/flatBlack"
+            android:textColorHint="@color/silverDark"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_padding_size_small"
+            android:layout_marginRight="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Contact number"
+            android:inputType="number"
+            android:padding="@dimen/margin_padding_size_medium"
+            android:textSize="@dimen/text_size_small" />
+
+        <EditText
+            android:id="@+id/et_employee_name"
+            android:layout_width="match_parent"
+            android:textColor="@color/flatBlack"
+            android:textColorHint="@color/silverDark"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_padding_size_small"
+            android:layout_marginRight="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Employee name"
+            android:inputType="text"
+            android:padding="@dimen/margin_padding_size_medium"
+            android:textSize="@dimen/text_size_small" />
+
+
+        <EditText
+            android:id="@+id/et_other_details"
+            android:layout_width="match_parent"
+            android:textColor="@color/flatBlack"
+            android:textColorHint="@color/silverDark"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_padding_size_small"
+            android:layout_marginRight="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="@font/open_sans_light"
+            android:hint="Other details"
+            android:inputType="text"
+            android:padding="@dimen/margin_padding_size_medium"
+            android:textSize="@dimen/text_size_small" />
+
+
+        <Button
+            android:id="@+id/bt_submit"
+            android:textColorHint="@color/silverDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_padding_size_small"
+            android:background="@drawable/background_button_forms"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:text="@string/submit_feedback_complaints"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/bt_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_small"
+            android:layout_marginEnd="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:background="@drawable/background_button_forms_back"
+            android:fontFamily="@font/open_sans_semi_bold"
+            android:text="@string/cancel"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</ScrollView>

@@ -30,4 +30,5 @@
     <string name="search_hint">Search feed...</string>
     <string name="no_feedback_complaints_found">No feedback / complaints found\nCreate by submitting a feedback. We value your opinions, we care for your experience.</string>
     <string name="submit_feedback_complaints">Submit Feedback / Complaints</string>
+    <string name="cancel">CANCEL</string>
 </resources>

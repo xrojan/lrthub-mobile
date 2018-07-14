@@ -49,6 +49,10 @@ class FeedbackFragment : BaseFragment() {
     }
 
     private fun initComponents() {
+        // Init listeners
+        bt_create_new.setOnClickListener { showFeedbackDetail() }
+        bt_create_new_main.setOnClickListener { showFeedbackDetail() }
+
         subscribe(userViewModel.getUserLocalData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.single())
@@ -57,6 +61,12 @@ class FeedbackFragment : BaseFragment() {
                         onSuccessFetchLocal(it[0].token, it[0].id)
                     }
                 })
+    }
+
+    private fun showFeedbackDetail() {
+        val feedbackDetailFragment = FeedbackDetailDialogFragment()
+        feedbackDetailFragment.show(activity!!.fragmentManager, feedbackDetailFragment::class.java.simpleName)
+        Log.e(tag, "Hello")
     }
 
     private fun onSuccessFetchLocal(token: String, uid: Int) {

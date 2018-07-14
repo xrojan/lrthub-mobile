@@ -53,12 +53,15 @@ interface FeedbackApi {
 
     @FormUrlEncoded
     @POST("/api/v1/feedback/create/")
-    fun createNewFeedbackConversation(@Query("full_name") fullName: String,
-                                      @Query("address") address: String,
-                                      @Query("contact_number") contactNumber: String,
-                                      @Query("employee_name") employeeName: String,
-                                      @Query("incident_date") incidentDate: String,
-                                      @Query("incident_subject") incidentSubject: String,
-                                      @Query("sender_id") senderID: String,
-                                      @Query("receiver_id") receiverId: String): Observable<Request<FeedbackConversation>>
+    fun sendFeedbackConversation(@Header("Authorization") authorization: String,
+                                 @Header("Api-Key") apiKey: String,
+                                 @Field("full_name") fullName: String,
+                                 @Field("address") address: String,
+                                 @Field("contact_number") contactNumber: String,
+                                 @Field("employee_name") employeeName: String,
+                                 @Field("incident_date") incidentDate: String,
+                                 @Field("incident_subject") incidentSubject: String,
+                                 @Field("other_details") otherDetails: String,
+                                 @Field("sender_id") senderId: Int,
+                                 @Field("receiver_id") receiverId: Int): Observable<Request<FeedbackConversation>>
 }
