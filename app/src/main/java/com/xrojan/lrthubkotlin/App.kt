@@ -52,15 +52,6 @@ class App : Application() {
         Fabric.with(this, Crashlytics())
         Fabric.with(this, Answers())
 
-        // TODO: Remove me
-        Answers.getInstance().logContentView(ContentViewEvent()
-                .putCustomAttribute("User Logged In", "Male")
-                .putCustomAttribute("User Logged In", "Female")
-                .putCustomAttribute("Feeds/News", "LRMC launches 2018 Hackatren")
-                .putCustomAttribute("Feeds/News", "Hackatren 2018 Winners Declared")
-                .putCustomAttribute("Advertisements", "Nido 3 Plus")
-                .putCustomAttribute("Advertisements", "Milo"))
-
         // Networking
         gsonFactory = GsonConverterFactory.create()
         rxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create()
