@@ -62,7 +62,7 @@ class App : Application() {
 
         // User
         userApi = retrofit.create(UserApi::class.java)
-        userRepository = UserRepository(userApi, appDatabase.userDao())
+        userRepository = UserRepository(userApi, appDatabase.userDao(), getString(R.string.demo_api_key))
         userViewModel = UserViewModel(userRepository)
 
         // Feed

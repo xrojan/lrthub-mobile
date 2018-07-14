@@ -2,7 +2,10 @@ package com.xrojan.lrthubkotlin.viewmodel
 
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData
 import com.xrojan.lrthubkotlin.repository.UserRepository
+import com.xrojan.lrthubkotlin.repository.entities.Feed
 import com.xrojan.lrthubkotlin.repository.entities.User
+import com.xrojan.lrthubkotlin.repository.entities.UserProfile
+import com.xrojan.lrthubkotlin.viewmodel.data.UIDataArray
 import io.reactivex.Observable
 
 /**
@@ -25,5 +28,20 @@ class UserViewModel(private val userRepository: UserRepository) {
                     UIData(it)
                 }
     }
+
+    fun getUserDetail(token: String, userId: Int): Observable<UIDataArray<List<UserProfile>>>? {
+        return userRepository.getUserDetail(token, userId)
+                .map {
+                    UIDataArray(it)
+                }
+    }
+
+    fun getUserLocalData(): Observable<List<User>>{
+        return userRepository.getUserCredentials()
+                .map {
+                    it
+                }
+    }
+
 
 }
