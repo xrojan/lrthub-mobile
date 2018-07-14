@@ -2,6 +2,8 @@ package com.xrojan.lrthubkotlin
 
 import android.app.Application
 import android.arch.persistence.room.Room
+import com.crashlytics.android.Crashlytics
+import com.crashlytics.android.answers.Answers
 import com.xrojan.lrthubkotlin.repository.FeedRepository
 import com.xrojan.lrthubkotlin.repository.UserRepository
 import com.xrojan.lrthubkotlin.repository.api.FeedApi
@@ -9,6 +11,7 @@ import com.xrojan.lrthubkotlin.repository.api.UserApi
 import com.xrojan.lrthubkotlin.repository.db.AppDatabase
 import com.xrojan.lrthubkotlin.viewmodel.FeedViewModel
 import com.xrojan.lrthubkotlin.viewmodel.UserViewModel
+import io.fabric.sdk.android.Fabric
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -42,6 +45,10 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        // Fabric
+        Fabric.with(this, Crashlytics())
+        Fabric.with(this, Answers())
 
         // Networking
         gsonFactory = GsonConverterFactory.create()

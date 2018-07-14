@@ -50,7 +50,11 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.login.SignupActivity"></activity>
+        <activity android:name=".ui.login.SignupActivity" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="6713d77c03208e10aacf848c6fd735c3141d46da" />
     </application>
 
 </manifest>
