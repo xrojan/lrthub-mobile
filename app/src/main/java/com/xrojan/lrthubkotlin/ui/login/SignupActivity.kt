@@ -131,7 +131,7 @@ class SignupActivity : BaseActivity() {
         }
 
         // Start new activity intent on login
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
 
