@@ -7,7 +7,7 @@ import com.xrojan.lrthubkotlin.activities.BaseActivity
 import com.xrojan.lrthubkotlin.ui.feed.FeedsFragment
 import com.xrojan.lrthubkotlin.ui.feedback.FeedbackFragment
 import com.xrojan.lrthubkotlin.ui.profile.ProfileFragment
-import com.xrojan.lrthubkotlin.ui.traincheck.TraincheckFragment
+import com.xrojan.lrthubkotlin.ui.traincheck.TrainCheckFragment
 import kotlinx.android.synthetic.main.main_activity.*
 import android.app.SearchManager
 import android.content.ComponentName
@@ -28,13 +28,13 @@ import com.xrojan.lrthubkotlin.constants.EVENT_TRACKER
 import com.xrojan.lrthubkotlin.repository.entities.Ad
 import com.xrojan.lrthubkotlin.repository.entities.Feed
 import com.xrojan.lrthubkotlin.ui.chatbot.ChatbotFragment
+import com.xrojan.lrthubkotlin.ui.feed.FeedDetailDialogFragment
 import com.xrojan.lrthubkotlin.viewmodel.AdViewModel
 import com.xrojan.lrthubkotlin.viewmodel.FeedViewModel
 import com.xrojan.lrthubkotlin.viewmodel.data.UIDataArray
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.main_activity.view.*
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.image
 import org.jetbrains.anko.uiThread
 import java.util.*
 
@@ -45,7 +45,7 @@ class MainActivity : BaseActivity() {
     private val adViewModel: AdViewModel = App.injectAdViewModel()
 
     private lateinit var feedsFragment: FeedsFragment
-    private lateinit var traincheckFragment: TraincheckFragment
+    private lateinit var trainCheckFragment: TrainCheckFragment
     private lateinit var chatbotFragment: ChatbotFragment
     private lateinit var feedbackFragment: FeedbackFragment
     private lateinit var profileFragment: ProfileFragment
@@ -58,7 +58,7 @@ class MainActivity : BaseActivity() {
         if (savedInstanceState == null) {
             feedsFragment = FeedsFragment.newInstance()
             chatbotFragment = ChatbotFragment.newInstance()
-            traincheckFragment = TraincheckFragment.newInstance()
+            trainCheckFragment = TrainCheckFragment.newInstance()
             feedbackFragment = FeedbackFragment.newInstance()
             profileFragment = ProfileFragment.newInstance()
             initComponents()
@@ -86,7 +86,7 @@ class MainActivity : BaseActivity() {
                 }
                 R.id.nav_traincheck -> {
                     iv_banner_ad_view.visibility = View.GONE
-                    loadFragment(R.id.fl_container, traincheckFragment, traincheckFragment::class.java.simpleName)
+                    loadFragment(R.id.fl_container, trainCheckFragment, trainCheckFragment::class.java.simpleName)
                 }
                 R.id.nav_feedback -> {
                     iv_banner_ad_view.visibility = View.GONE
@@ -158,6 +158,10 @@ class MainActivity : BaseActivity() {
             uiThread {
                 rv_feeds_search.layoutManager = LinearLayoutManager(applicationContext)
                 searchFeedAdapter = SearchFeedAdapter(applicationContext, data.request.result)
+                searchFeedAdapter.onItemClick = {
+                    val feedDetailDialogFragment = FeedDetailDialogFragment()
+                    feedDetailDialogFragment.show(supportFragmentManager, feedDetailDialogFragment::class.java.simpleName, data.request.result[it])
+                }
                 rv_feeds_search.adapter = searchFeedAdapter
             }
         }

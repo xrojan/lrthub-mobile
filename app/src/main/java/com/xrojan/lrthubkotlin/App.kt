@@ -50,11 +50,16 @@ class App : Application() {
         private lateinit var adRepository: AdRepository
         private lateinit var adViewModel: AdViewModel
 
+        private lateinit var trainCheckApi: TrainCheckApi
+        private lateinit var trainCheckRepository: TrainCheckRepository
+        private lateinit var trainCheckViewModel: TrainCheckViewModel
+
         fun injectUserViewModel() = userViewModel
         fun injectFeedViewModel() = feedViewModel
         fun injectChatbotViewModel() = chatbotViewModel
         fun injectFeedbackViewModel() = feedbackViewModel
         fun injectAdViewModel() = adViewModel
+        fun injectTrainCheckViewModel() = trainCheckViewModel
     }
 
     override fun onCreate() {
@@ -105,6 +110,11 @@ class App : Application() {
         adApi = retrofit.create(AdApi::class.java)
         adRepository = AdRepository(adApi, getString(R.string.demo_api_key))
         adViewModel = AdViewModel(adRepository)
+
+        // Observable
+        trainCheckApi = retrofit.create(TrainCheckApi::class.java)
+        trainCheckRepository = TrainCheckRepository(trainCheckApi, getString(R.string.demo_api_key))
+        trainCheckViewModel = TrainCheckViewModel(trainCheckRepository)
 
     }
 

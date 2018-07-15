@@ -23,6 +23,8 @@ class SearchFeedAdapter(private val context: Context,
     private var feedItemsSearch: MutableList<Feed> = ArrayList()
     private var itemsCount: Int = 0
 
+    var onItemClick: (Int) -> Unit = {}
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivCoverImage: ImageView = view.iv_cover_image
         val tvTitle: TextView = view.tv_title
@@ -37,6 +39,12 @@ class SearchFeedAdapter(private val context: Context,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        // Assign click listener
+        holder.itemView.setOnClickListener {
+            onItemClick(holder.adapterPosition)
+        }
+
+        // Render Details
         val feed: Feed = feedItems[position]
         holder.tvTitle.text = truncate(feed.title, 20, "...")
         holder.tvContent.text = truncate(feed.content, 30, "...")

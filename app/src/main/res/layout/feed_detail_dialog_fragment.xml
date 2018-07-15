@@ -6,7 +6,8 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -65,7 +66,7 @@
                 <View
                     android:id="@+id/v_bounds"
                     android:layout_width="match_parent"
-                    android:layout_height="5dp"/>
+                    android:layout_height="5dp" />
 
                 <TextView
                     android:id="@+id/tv_title"
@@ -104,10 +105,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
-        android:visibility="gone"
         android:layout_marginEnd="@dimen/margin_padding_size_small"
         android:layout_marginBottom="@dimen/margin_padding_size_small"
         android:background="@null"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_scroll_to_top" />
+        android:src="@drawable/ic_scroll_to_top"
+        android:visibility="gone" />
 </RelativeLayout>

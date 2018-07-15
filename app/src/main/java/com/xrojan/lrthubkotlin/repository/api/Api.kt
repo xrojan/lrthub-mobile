@@ -75,3 +75,8 @@ interface AdApi {
     @GET("/api/v1/ads/")
     fun getAds(@Header("Api-Key") apiKey: String): Observable<RequestArray<List<Ad>>>
 }
+
+interface TrainCheckApi {
+    @GET("/api/v1/traincheck/")
+    fun getTrainCheckFeeds(@Header("Api-Key") apiKey: String): Observable<Request<List<TrainCheckHistory>>>
+}
