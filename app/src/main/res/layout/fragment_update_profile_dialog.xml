@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".ui.profile.UpdateProfileDialogFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="@dimen/margin_padding_size_medium"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="UPDATE PROFILE"
+                android:textAlignment="center"
+                android:textColor="@color/flatBlackDark"
+                android:textSize="@dimen/text_size_medium"
+                android:textStyle="bold"
+
+                />
+
+            <EditText
+                android:id="@+id/et_update_mobile_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Mobile number"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_update_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="BDAY"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_update_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Address"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_update_children_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Children count"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:text="10"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_update_salary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Salary"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:text="25000"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_update_no_of_cars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Children count"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:text="1"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Male"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:text="Male"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_nationality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Nationality"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:text="Filipino"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_marital_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Marital"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:text="Single"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+
+            <EditText
+                android:id="@+id/et_employment_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_medium"
+                android:background="@color/flatBlackDark"
+                android:hint="Employment status"
+                android:padding="@dimen/margin_padding_size_medium"
+                android:text="Contractual"
+                android:textColor="@color/white"
+                android:textColorHint="@color/silverDark"
+
+                />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/blueGreen"
+
+        android:text="SAVE CHANGES"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

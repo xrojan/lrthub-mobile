@@ -26,6 +26,12 @@ interface UserApi {
             @Header("Api-Key") apiKey: String,
             @Header("Authorization") token: String,
             @Query("user_id") userId: Int): Observable<RequestArray<List<UserProfile>>>
+
+    @GET("/api/v1/users/profile/options/gender/")
+    fun getGenders(
+            @Header("Api-Key") apiKey: String,
+            @Header("Authorization") token: String): Observable<RequestArray<List<Gender>>>
+
 }
 
 interface FeedApi {

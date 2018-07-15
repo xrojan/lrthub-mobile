@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
+    >
+
+    <ImageView
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/flatBlackDark"
+        android:src="@drawable/sample_bg"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/sample_bg_two"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <Button
+        android:id="@+id/btn_verify"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/blueGreen"
+        android:textSize="@dimen/text_size_micro"
+        android:paddingStart="@dimen/margin_padding_size_small"
+        android:paddingEnd="@dimen/margin_padding_size_small"
+        android:text="update profile"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint" />
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/red"
+        android:textSize="@dimen/text_size_micro"
+        android:paddingStart="@dimen/margin_padding_size_small"
+        android:paddingEnd="@dimen/margin_padding_size_small"
+        android:text="LOGOUT"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/constraint" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+
+        >
+
+        <TextView
+            android:id="@+id/tv_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:gravity="center"
+            android:text="Joshua De guzman"
+            android:textAllCaps="true"
+            android:textColor="@color/flatBlack"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:text="josh@me.com"
+            android:textAllCaps="true"
+            android:textColor="@color/flatBlack"
+            android:textSize="@dimen/text_size_small"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_mobile_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_regular"
+            android:textStyle="italic"
+            android:text="mobile no"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/flatBlack"
+            android:textSize="@dimen/text_size_small"
+            android:textAlignment="center"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_padding_size_small"
+            android:layout_marginTop="@dimen/margin_padding_size_small"
+            android:layout_marginEnd="@dimen/margin_padding_size_small"
+            android:layout_marginBottom="@dimen/margin_padding_size_small"
+            android:gravity="center|top"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="address"
+                android:textAllCaps="true"
+                android:textColor="@color/flatBlack"
+                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/rounded_background_white_card"
+                android:textAlignment="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_marginTop="@dimen/margin_padding_size_micro"
+                android:elevation="3dp"
+                />
+
+
+            <TextView
+                android:id="@+id/tv_children_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Children no"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/flatBlack"
+                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/rounded_background_white_card"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:elevation="3dp"
+                android:layout_marginTop="@dimen/margin_padding_size_small"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_birthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="BDAY"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/flatBlack"
+                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/rounded_background_white_card"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:elevation="3dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Gender"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/flatBlack"
+                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/rounded_background_white_card"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:elevation="3dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_nationality"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Filipino"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/flatBlack"
+                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/rounded_background_white_card"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:elevation="3dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_marital_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Single"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/flatBlack"
+                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/rounded_background_white_card"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:elevation="3dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_employment_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_small"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="Full time"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/flatBlack"
+                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/rounded_background_white_card"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:elevation="3dp"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_salary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_padding_size_small"
+                android:layout_marginBottom="@dimen/margin_padding_size_medium"
+                android:fontFamily="@font/open_sans_regular"
+                android:text="SALARY"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/flatBlack"
+                android:textSize="@dimen/text_size_small"
+                android:background="@drawable/rounded_background_white_card"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:elevation="3dp"
+
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>

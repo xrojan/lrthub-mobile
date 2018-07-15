@@ -31,4 +31,7 @@
     <string name="no_feedback_complaints_found">No feedback / complaints found\nCreate by submitting a feedback. We value your opinions, we care for your experience.</string>
     <string name="submit_feedback_complaints">Submit Feedback / Complaints</string>
     <string name="cancel">CANCEL</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

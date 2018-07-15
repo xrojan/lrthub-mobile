@@ -2,12 +2,9 @@ package com.xrojan.lrthubkotlin.repository
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.xrojan.lrthubkotlin.repository.entities.Request
 import com.xrojan.lrthubkotlin.repository.api.UserApi
 import com.xrojan.lrthubkotlin.repository.db.UserDao
-import com.xrojan.lrthubkotlin.repository.entities.RequestArray
-import com.xrojan.lrthubkotlin.repository.entities.User
-import com.xrojan.lrthubkotlin.repository.entities.UserProfile
+import com.xrojan.lrthubkotlin.repository.entities.*
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
@@ -50,6 +47,12 @@ class UserRepository(val userApi: UserApi, val userDao: UserDao, val apikey: Str
                 }
     }
 
+    fun getGenders(token: String): Observable<RequestArray<List<Gender>>>  {
+        return userApi.getGenders(apikey, token)
+                .doOnNext {
+                    Log.e(tag, it.result.toString())
+                }
+    }
     /**
      * Stores users in the local database
      * @param user
