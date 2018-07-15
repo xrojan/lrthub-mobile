@@ -137,7 +137,7 @@ class ProfileFragment : BaseFragment() {
                     Log.d(tag, it.message)
                     doAsync {
                         uiThread {
-                            toast("FAILED RETRIEVING USER")
+//                            toast("FAILED RETRIEVING USER")
                         }
                     }
                 }))
