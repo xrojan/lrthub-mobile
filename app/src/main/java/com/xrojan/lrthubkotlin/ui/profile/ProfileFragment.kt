@@ -67,7 +67,6 @@ class ProfileFragment : BaseFragment() {
                 .observeOn(Schedulers.single())
                 .subscribe {
                     if (it.isNotEmpty()) {
-//                        Log.d(tag, "LAMAN: " + it[0].token + it[0].id)
                         onSuccessFetchLocal(it[0].token, it[0].id)
                     }
                 })
@@ -77,7 +76,6 @@ class ProfileFragment : BaseFragment() {
                 btn_verify.isEnabled = false
             }
         }
-
     }
 
     private fun showUpdateDialog(data: UIDataArray<List<UserProfile>>) {
@@ -89,7 +87,6 @@ class ProfileFragment : BaseFragment() {
                 }
             }
         }
-
     }
 
     private fun onSuccessFetchLocal(token: String, uid: Int) {
@@ -106,16 +103,13 @@ class ProfileFragment : BaseFragment() {
                                 // show details and show update button
                                 doAsync {
                                     uiThread {
-//                                        toast("Profile OK, show update button")
                                         btn_verify.isEnabled = true
                                         btn_verify.text = "UPDATE PROFILE"
                                     }
                                 }
                             } else {
-                                // show add verify button
                                 doAsync {
                                     uiThread {
-//                                        toast("Profile no result, Show add verify button")
                                         btn_verify.isEnabled = true
                                         btn_verify.text = "VERIFY PROFILE"
                                     }
@@ -133,13 +127,7 @@ class ProfileFragment : BaseFragment() {
                         }
                     }
                 }, {
-                    // onFailedLogin()
                     Log.d(tag, it.message)
-                    doAsync {
-                        uiThread {
-//                            toast("FAILED RETRIEVING USER")
-                        }
-                    }
                 }))
     }
 
@@ -157,14 +145,7 @@ class ProfileFragment : BaseFragment() {
                 tv_marital_status.text = "Marital status: " + data.request.result[0].maritalStatus.name
                 tv_employment_status.text = "Employment status: " + data.request.result[0].employmentStatus.name
                 tv_salary.text = "Salary: " + data.request.result[0].salary
-
             }
         }
     }
-
-//    override fun onDetach() {
-//        super.onDetach()
-//        (activity as AppCompatActivity).supportActionBar!!.show()
-//    }
-
 }

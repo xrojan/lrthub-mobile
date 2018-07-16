@@ -1,6 +1,5 @@
 package com.xrojan.lrthubkotlin.ui.traincheck
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +14,8 @@ import com.github.mikephil.charting.components.XAxis.XAxisPosition
 import android.util.Log
 import com.github.mikephil.charting.data.BarData
 import com.xrojan.lrthubkotlin.repository.entities.TrainCheckHistory
-import com.xrojan.lrthubkotlin.viewmodel.data.UIDataArray
 import io.reactivex.schedulers.Schedulers
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.xrojan.lrthubkotlin.viewmodel.data.UIData

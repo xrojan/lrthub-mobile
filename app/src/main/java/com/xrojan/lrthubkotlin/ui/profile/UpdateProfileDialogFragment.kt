@@ -36,8 +36,6 @@ class UpdateProfileDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        renderUI(this.userProfile)
-//        getSpinners()
     }
 
     private fun subscribe(disposable: Disposable): Disposable {
@@ -67,7 +65,7 @@ class UpdateProfileDialogFragment : DialogFragment() {
                 .observeOn(Schedulers.single())
                 .subscribe {
                     if (it.isNotEmpty()) {
-//                        getGender(it[0].token)
+                        //
                     }
                 })
     }
@@ -77,22 +75,12 @@ class UpdateProfileDialogFragment : DialogFragment() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.single())
                 .subscribe {
-//                    setSpinnerGender(it)
+                    //
                 })
     }
 
     fun setSpinnerGender(data: UIDataArray<List<Gender>>) {
-        doAsync {
-            uiThread {
-//                val list = arrayListOf<String>()
-//                for (i in data.request.result) {
-//                    list.add(i.name)
-//                }
-//
-//                val aa = ArrayAdapter(activity, android.R.layout.simple_spinner_item, list)
-//                spnr_gender.adapter = aa
-            }
-        }
+        //
     }
 
 }
