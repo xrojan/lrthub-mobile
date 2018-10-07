@@ -2,7 +2,7 @@
 Android based mobile application of LRTHUb Ecosystem
 > Part of our team's entry to the 2018 Hackatren Hackathon
 
-## Features
+### Features
 
 - [x] ChatBot
 - [x] TrainCheck (AI Vision)
@@ -15,6 +15,14 @@ Android based mobile application of LRTHUb Ecosystem
 - [x] Feedback Management
 - [x] News Portal, Feeds and Promotions
 
-## License
+### License
 
-LRTHub - Mobile is released under the BSD 3-Clause License. [See LICENSE](https://github.com/joshuadeguzman/lrthub-mobile/blob/master/LICENSE) for details.
+LRTHub - CORE is released under the BSD 3-Clause License. See [LICENSE](https://github.com/joshuadeguzman/lrthub-core/blob/master/LICENSE) for details.
+
+### Contributing
+
+1. Fork it (<https://github.com/xrojan/lrthub-core/fork>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
